@@ -20,6 +20,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'registration',
     'zioprojekt.webservice',
     'home',
 )
@@ -31,7 +32,6 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django_cprofile_middleware.middleware.ProfilerMiddleware',
 )
 
 ROOT_URLCONF = 'zioprojekt.urls'
@@ -71,3 +71,15 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
+
+TEMPLATE_DIRS = (
+    os.path.join(BASE_DIR, 'templates'),
+)
+
+ACCOUNT_ACTIVATION_DAYS = 7
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'zioprojekt4pb@gmail.com'
+EMAIL_HOST_PASSWORD = '4ZIOProjekt'
