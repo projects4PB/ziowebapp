@@ -22,7 +22,7 @@ INSTALLED_APPS = (
     'rest_framework',
     'registration',
     'zioprojekt.webservice',
-    'home',
+    'zioprojekt.home',
 )
 
 MIDDLEWARE_CLASSES = (

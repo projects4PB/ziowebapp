@@ -1,1 +1,19 @@
-{% block content %}{% endblock %}
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>
+			{% block title %}
+			Organizator wyjazdów
+			{% endblock %}
+		</title>
+		<link rel="stylesheet" href="{{ STATIC_URL }}css/main.css" />
+	</head>
+	<body>
+		<div id="logo">LOGO</div>
+		<div id="content">
+			{% block content %}{% endblock %}
+		</div>
+		<script src="{{ STATIC_URL }}js/main.js"></script>
+	</body>
+</html> 
