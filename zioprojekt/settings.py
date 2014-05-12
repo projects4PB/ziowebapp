@@ -21,7 +21,13 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'rest_framework',
     'registration',
+    'south',
+)
+
+INSTALLED_APPS += (
+    'zioprojekt.categories',
     'zioprojekt.webservice',
+    'zioprojekt.places',
     'zioprojekt.home',
 )
 
