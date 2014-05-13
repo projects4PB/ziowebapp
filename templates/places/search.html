@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form method="POST" action="">
+	{% csrf_token %} 
+	<div>
+		<label for="search_phrase">Szukaj:</label>
+		<input type="text" name="search_phrase" />
+	</div>
+</form>
+<ul>
+	{% for tourist_obj in object_list %}
+	<li>{{ tourist_obj.name }}</li>
+	{% endfor %}
+</ul>
+{% endblock %}

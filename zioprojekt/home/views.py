@@ -1,5 +1,8 @@
-from django.views.generic import TemplateView
+from django.views.generic.list import ListView
+
+from places.models import RestCentre
 
 
-class HomeView(TemplateView):
+class HomeView(ListView):
+    model = RestCentre
     template_name = "home/home.html"

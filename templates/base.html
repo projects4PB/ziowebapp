@@ -20,7 +20,7 @@
 				{% block menu %}
 				<ul>
 					<li class="first" >
-						<a href="/">Home</a>
+						<a href="/">Strona główna</a>
 					</li>
 					<li>
 						<a href="/places/create">Dodawanie obiektu</a>
@@ -30,6 +30,9 @@
 					</li>
 					<li>
 						<a href="/accounts/login">Logowanie</a>
+					</li>
+					<li>
+						<a href="/search">Szukaj</a>
 					</li>
 				</ul>
 				{% endblock %}
@@ -52,5 +55,7 @@
 			{% block footer %}{% endblock %}
 		</div>
 		<script src="{{ STATIC_URL }}js/main.js"></script>
+		<script src="{{ STATIC_URL }}js/jquery/jquery-1.11.1.js"></script>
+		<script src="{{ STATIC_URL }}js/jquery/jquery.cookie.js"></script>
 	</body>
 </html> 

@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
-LISTA
+<ul>
+	{% for tourist_obj in object_list %}
+	<li>{{ tourist_obj.name }}</li>
+	{% endfor %}
+</ul>
 {% endblock %}

@@ -1,5 +1,8 @@
 from django.db import models
 
+from djorm_pgfulltext.models import SearchManager
+from djorm_pgfulltext.fields import VectorField
+
 
 class Facilities(models.Model):
     """Facilities model"""
@@ -12,6 +15,9 @@ class Facilities(models.Model):
 class TouristObjectsCity(models.Model):
     """Tourist objects city"""
     name = models.CharField(max_length=255, verbose_name=u'nazwa')
+
+    def __unicode__(self):
+        return self.name
 
 
 class TouristObject(models.Model):
@@ -44,6 +50,12 @@ class HolidayCamp(TouristObject):
 
 class RestCentre(TouristObject):
     """Rest centre model"""
+    search_index = VectorField()
+
+    objects = SearchManager(
+        fields=('name', 'description'),
+        auto_update_search_field=True
+    )
 
     class Meta:
         verbose_name = u'ośrodek wczasowy'
