@@ -10,9 +10,46 @@
 		<link rel="stylesheet" href="{{ STATIC_URL }}css/main.css" />
 	</head>
 	<body>
-		<div id="logo">LOGO</div>
-		<div id="content">
+		<div id="page">
+		  <div id="sidebar">
+			<div id="logo">
+			  <h1><br/><br/><br/></h1>
+			</div>
+			<!-- end header -->
+			<div id="menu">
+				{% block menu %}
+				<ul>
+					<li class="first" >
+						<a href="/">Home</a>
+					</li>
+					<li>
+						<a href="/places/create">Dodawanie obiektu</a>
+					</li>
+					<li>
+						<a href="/accounts/register">Rejestracja</a>
+					</li>
+					<li>
+						<a href="/accounts/login">Logowanie</a>
+					</li>
+				</ul>
+				{% endblock %}
+			</div>
+			<!-- end menu -->
+		  </div>
+		  <!-- end sidebar -->
+		  <div id="content">
+			<div>
+				<img src="{{ STATIC_URL }}gfx/img08.jpg"
+					alt="" width="740" height="220" />
+			</div>
 			{% block content %}{% endblock %}
+		  </div>
+		  <!-- end content -->
+		  <div style="clear: both;">&nbsp;</div>
+		</div>
+		<!-- end page -->
+		<div id="footer">
+			{% block footer %}{% endblock %}
 		</div>
 		<script src="{{ STATIC_URL }}js/main.js"></script>
 	</body>
