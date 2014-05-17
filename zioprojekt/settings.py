@@ -36,6 +36,9 @@ INSTALLED_APPS = (
 )
 
 INSTALLED_APPS += (
+    'zioprojekt.events',
+    'zioprojekt.offers',
+    'zioprojekt.notes',
     'zioprojekt.categories',
     'zioprojekt.webservice',
     'zioprojekt.places',
@@ -100,6 +103,8 @@ STATICFILES_DIRS = (
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates'),
 )
+
+AUTH_PROFILE_MODULE = 'registration.RegistrationProfile'
 
 ACCOUNT_ACTIVATION_DAYS = 7
 

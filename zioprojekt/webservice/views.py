@@ -1,6 +1,6 @@
 from rest_framework.generics import ListAPIView
 
-from .models import Note
+from zioprojekt.notes.models import Note
 
 from .serializers import NoteSerializer
 
