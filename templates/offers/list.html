@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <h2>Wybierz interesującą Cię ofertę</h2>
 <ul>
 	{% for offer in object_list %}
@@ -6,6 +7,11 @@
 		<span class="offer-desc">{{ offer.description }}</span>
 		<span class="offer-date">{{ offer.creation_date }}</span>
 	</li>
+=======
+<ul>
+	{% for offer in object_list %}
+	<li class="offer" data-offer-id="{{ offer.pk }}">{{ offer.name }}</li>
+>>>>>>> 5546f99237fcc1916c625a1be0614e4b40e266a0
 	{% endfor %}
 </ul>
 <button type="button" id="create-event-bttn">UTWÓRZ WYDARZENIE WYJAZDU</button>
