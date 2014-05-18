@@ -19,6 +19,15 @@
 			<div id="menu">
 				{% block menu %}
 				<ul>
+					<li>
+						<button id="organize-button">Organizuj wyjazd</button>
+						<div id="organize-popup-1" class="organize-popup">
+							<div id="popup-content-1" class="popup-content"></div>
+						</div>
+						<div id="organize-popup-2" class="organize-popup">
+							<div id="popup-content-2" class="popup-content"></div>
+						</div>
+					</li>
 					<li class="first" >
 						<a href="/">Strona główna</a>
 					</li>
@@ -63,8 +72,9 @@
 		<div id="footer">
 			{% block footer %}{% endblock %}
 		</div>
-		<script src="{{ STATIC_URL }}js/main.js"></script>
 		<script src="{{ STATIC_URL }}js/jquery/jquery-1.11.1.js"></script>
 		<script src="{{ STATIC_URL }}js/jquery/jquery.cookie.js"></script>
+		<script src="{{ STATIC_URL }}js/jquery/jquery.bpopup.js"></script>
+		<script src="{{ STATIC_URL }}js/main.js"></script>
 	</body>
 </html> 

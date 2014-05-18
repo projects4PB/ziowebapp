@@ -42,6 +42,7 @@ INSTALLED_APPS += (
     'zioprojekt.categories',
     'zioprojekt.webservice',
     'zioprojekt.places',
+    'zioprojekt.search',
     'zioprojekt.home',
 )
 
@@ -79,6 +80,12 @@ LANGUAGES = (
 LOCALE_PATHS = (
     '/home/adrian/heroku/zioprojekt/conf/locale/',
 )
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+    )
+}
 
 TIME_ZONE = 'UTC'
 
