@@ -236,3 +236,38 @@ a:hover {
 	height: 45px;
 	padding: 35px 0 0 20px;
 }
+
+/* -------------------- Organize Popup --------------------- */
+.organize-popup div.popup-content {
+	background: #fff;
+}
+
+.organize-popup ul#choices-list {
+	list-style: none;
+}
+
+.organize-popup li:hover {
+	cursor: pointer;
+}
+
+.organize-popup li.active {
+	background: #ccc;
+}
+
+.organize-popup li#img-choice-1 {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+}
+
+.organize-popup li#img-choice-2 {
+	position: absolute;
+	top: 10px;
+	left: 320px;
+}
+
+.organize-popup li#img-choice-3 {
+	position: absolute;
+	top: 10px;
+	left: 630px;
+}

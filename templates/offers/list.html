@@ -1,0 +1,6 @@
+<ul>
+	{% for offer in object_list %}
+	<li class="offer" data-offer-id="{{ offer.pk }}">{{ offer.name }}</li>
+	{% endfor %}
+</ul>
+<button type="button" id="create-event-bttn">UTWÓRZ WYDARZENIE WYJAZDU</button>

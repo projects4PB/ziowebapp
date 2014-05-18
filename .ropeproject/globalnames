@@ -1,9 +1,9 @@
-€}q(U%django_cprofile_middleware.middleware]qUProfilerMiddlewareqaUmanage]Uzioprojekt.urls]qUurlpatternsqaUzioprojekt.settings]q(U	DATABASESqUMIDDLEWARE_CLASSESqUROOT_URLCONFq	U
-EMAIL_PORTq
-ULANGUAGE_CODEqUUSE_I18NqU
-SECRET_KEYqUBASE_DIRqUEMAIL_HOST_PASSWORDqUACCOUNT_ACTIVATION_DAYSqUSTATIC_ROOTqU	TIME_ZONEqUWSGI_APPLICATIONqUALLOWED_HOSTSqU
-EMAIL_HOSTqUTEMPLATE_DIRSqU
-STATIC_URLqUUSE_L10NqUDEBUGqUUSE_TZqUINSTALLED_APPSqUSTATICFILES_DIRSqUSECURE_PROXY_SSL_HEADERqUTEMPLATE_DEBUGqUEMAIL_HOST_USERqeUregistration.models]q (USHA1_REq!URegistrationManagerq"URegistrationProfileq#eUzioprojekt.places.views]q$(UCreateRestCentreViewq%UCreateTouristObjectViewq&eUzioprojekt.places.models]q'(UTouristObjectsCityq(UCampingq)UTouristObjectq*UHotelq+U
-GuestHouseq,U
-Facilitiesq-UHolidayCampq.U
-RestCentreq/UMotelq0eu.
+€}q(Uzioprojekt.notes.models]qUNoteqaUzioprojekt.places.views]q(USearchTouristObjectViewqUCreateRestCentreViewqUCreateTouristObjectViewqeUzioprojekt.webservice.views]qUNotesListWSq	aU%django_cprofile_middleware.middleware]q
+UProfilerMiddlewareqaUzioprojekt.events.views]qUCreateEventViewqaUmanage]Uzioprojekt.events.forms]qU	EventFormqaUzioprojekt.offers.views]q(UOffersListViewqUCreateOfferViewqeUzioprojekt.urls]qUurlpatternsqaUzioprojekt.settings]q(U	DATABASESqUMIDDLEWARE_CLASSESqUROOT_URLCONFqU
+EMAIL_PORTqULANGUAGE_CODEqUUSE_I18NqU
+SECRET_KEYqUBASE_DIRqUEMAIL_HOST_PASSWORDqUACCOUNT_ACTIVATION_DAYSqUSTATIC_ROOTq UAUTH_PROFILE_MODULEq!U	TIME_ZONEq"UWSGI_APPLICATIONq#ULOCALE_PATHSq$UALLOWED_HOSTSq%U
+EMAIL_HOSTq&UTEMPLATE_DIRSq'U
+STATIC_URLq(U	LANGUAGESq)UUSE_L10Nq*UDEBUGq+UUSE_TZq,UINSTALLED_APPSq-UEMAIL_USE_TLSq.USTATICFILES_DIRSq/USECURE_PROXY_SSL_HEADERq0UTEMPLATE_DEBUGq1UTEMPLATE_CONTEXT_PROCESSORSq2UREST_FRAMEWORKq3UEMAIL_HOST_USERq4eUregistration.models]q5(USHA1_REq6URegistrationManagerq7URegistrationProfileq8eUzioprojekt.notes.managers]q9UNoteManagerq:aUzioprojekt.search.views]q;Usearch_helperq<aUzioprojekt.places.models]q=(UTouristObjectsCityq>UCampingq?UTouristObjectq@UHotelqAU
+GuestHouseqBU
+FacilitiesqCUHolidayCampqDU
+RestCentreqEUMotelqFeu.
