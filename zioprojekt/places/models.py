@@ -11,6 +11,10 @@ class Facilities(models.Model):
     def __unicode__(self):
         return self.name
 
+    class Meta:
+        verbose_name = u'udogodnienie'
+        verbose_name_plural = u'udogodnienia'
+
 
 class TouristObjectsCity(models.Model):
     """Tourist objects city"""
@@ -18,6 +22,10 @@ class TouristObjectsCity(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    class Meta:
+        verbose_name = u'miejscowość'
+        verbose_name_plural = u'miejscowości'
 
 
 class TouristObject(models.Model):
