@@ -8,9 +8,3 @@ class CreateOfferView(CreateView):
     model = Offer
     template_name = 'offers/create.html'
     success_url = '/'
-
-
-class OffersListView(ListView):
-    """Return proper offers list"""
-    model = Offer
-    template_name = 'offers/list.html'

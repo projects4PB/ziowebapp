@@ -37,19 +37,6 @@ class TouristObject(models.Model):
     creation_date = models.DateTimeField(
         auto_now_add=True, verbose_name=u'data utworzenia')
 
-    class Meta:
-        abstract = True
-
-
-class HolidayCamp(TouristObject):
-    """Holiday camp model"""
-
-    class Meta:
-        verbose_name = u'ośrodek letniskowy'
-
-
-class RestCentre(TouristObject):
-    """Rest centre model"""
     search_index = VectorField()
 
     objects = SearchManager(
@@ -57,33 +44,8 @@ class RestCentre(TouristObject):
         auto_update_search_field=True
     )
 
-    class Meta:
-        verbose_name = u'ośrodek wczasowy'
-
-
-class Hotel(TouristObject):
-    """Hotel model"""
+    def __unicode__(self):
+        return self.name
 
     class Meta:
-        verbose_name = u'hotel'
-
-
-class Motel(TouristObject):
-    """Motel model"""
-
-    class Meta:
-        verbose_name = u'motel'
-
-
-class Camping(TouristObject):
-    """Camping model"""
-
-    class Meta:
-        verbose_name = u'camping'
-
-
-class GuestHouse(TouristObject):
-    """Guest house model"""
-
-    class Meta:
-        verbose_name = u'pensjonat'
+        verbose_name = u'obiekt turystyczny'
