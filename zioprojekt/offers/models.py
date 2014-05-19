@@ -7,6 +7,7 @@ class Offer(models.Model):
     tourist_object = models.ForeignKey(
         'places.TouristObject', verbose_name=u'powiązany obiekt')
     description = models.TextField(verbose_name=u'opis oferty')
+    price = models.IntegerField(verbose_name=u'cena', default=0)
     creation_date = models.DateTimeField(
         auto_now_add=True, verbose_name=u'data utworzenia')
 
