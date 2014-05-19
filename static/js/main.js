@@ -9,10 +9,11 @@
 				loadUrl: '/static/incs/organize.html',
 			}, function () {
 				$('li', '#choices-list').on('click', function(e) {
+					$.cookie('selected_type', $(this).data('trip-type'));
 					$('#organize-popup-1').bPopup().close()
 					$('#organize-popup-2').bPopup({
 						contentContainer:'#popup-content-2',
-						loadUrl: '/offers/list',
+						loadUrl: '/choices/offers-list/' + $.cookie('selected_type'),
 						loadCallback: function () {
 							$('#create-event-bttn').attr("disabled", "disabled");
 							$('#plan-road-bttn').attr("disabled", "disabled");
