@@ -49,3 +49,4 @@ class TouristObject(models.Model):
 
     class Meta:
         verbose_name = u'obiekt turystyczny'
+        verbose_name_plural = u'obiekty turystyczne'

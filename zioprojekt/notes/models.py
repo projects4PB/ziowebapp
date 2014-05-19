@@ -15,3 +15,7 @@ class Note(models.Model):
 
     def __unicode__(self):
         return self.title
+
+    class Meta:
+        verbose_name = u'Notatka'
+        verbose_name_plural = u'Notatki'

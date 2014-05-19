@@ -16,3 +16,7 @@ class Event(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    class Meta:
+        verbose_name = u'Wydarzenie'
+        verbose_name_plural = u'Wydarzenia'

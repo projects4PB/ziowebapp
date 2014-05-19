@@ -18,3 +18,7 @@ class TripTypeChoice(models.Model):
 
     def __unicode__(self):
         return self.slug
+
+    class Meta:
+        verbose_name = u'Rodzaj wyjazdu'
+        verbose_name_plural = u'Rodzaje wyjazdów'

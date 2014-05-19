@@ -12,3 +12,7 @@ class Offer(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    class Meta:
+        verbose_name = u'Oferta'
+        verbose_name_plural = u'Oferty'
