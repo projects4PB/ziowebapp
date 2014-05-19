@@ -1,12 +1,22 @@
 <h2>Wybierz interesującą Cię ofertę</h2>
-<ul>
-	{% for offer in object_list %}
-	<li class="offer" data-offer-id="{{ offer.pk }}">
-		<h3>{{ offer.name }}</h3>
-		<span class="offer-desc">{{ offer.description }}</span>
-		<span class="offer-date">{{ offer.creation_date }}</span>
-	</li>
-	{% endfor %}
-</ul>
+<form id="search-form" method="" action="">
+	<label for="search-field">Wyszukaj:</label>
+	<input id="search-field" type="text" />	
+</form>
+<div id="offers-list">
+	<ul>
+		{% for offer in object_list %}
+		<li class="offer" data-offer-id="{{ offer.pk }}">
+			<h3>{{ offer.name }}</h3>
+			<div class="offer-related">
+				<h4>Nazwa powiązanego obiektu: {{ offer.tourist_object.name }}</h4>
+				<p>Opis powiązanego obiektu: {{ offer.tourist_object.description }}</p>
+			</div>
+			<span class="offer-desc">{{ offer.description }}</span>
+			<span class="offer-date">{{ offer.creation_date }}</span>
+		</li>
+		{% endfor %}
+	</ul>
+</div>
 <button type="button" id="create-event-bttn">UTWÓRZ WYDARZENIE WYJAZDU</button>
 <button type="button" id="plan-road-bttn">PLANUJ TRASĘ</button>

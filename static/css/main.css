@@ -265,6 +265,6 @@ a:hover {
 	background: #ccc;
 }
 
-.organize-popup li.offer {
+.organize-popup div#offers-list {
 	width: 500px;
 }

@@ -39,6 +39,7 @@ INSTALLED_APPS += (
     'zioprojekt.events',
     'zioprojekt.offers',
     'zioprojekt.notes',
+    'zioprojekt.choices',
     'zioprojekt.categories',
     'zioprojekt.webservice',
     'zioprojekt.places',

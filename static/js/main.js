@@ -9,10 +9,11 @@
 				loadUrl: '/static/incs/organize.html',
 			}, function () {
 				$('li', '#choices-list').on('click', function(e) {
+					$.cookie('selected_type', $(this).data('trip-type'));
 					$('#organize-popup-1').bPopup().close()
 					$('#organize-popup-2').bPopup({
 						contentContainer:'#popup-content-2',
-						loadUrl: '/offers/list',
+						loadUrl: '/choices/offers-list/' + $.cookie('selected_type'),
 						loadCallback: function () {
 							$('#create-event-bttn').attr("disabled", "disabled");
 							$('#plan-road-bttn').attr("disabled", "disabled");
@@ -27,6 +28,22 @@
 							$('#create-event-bttn').on('click', function (e) {
 								top.location.href = "/events/create/"
 									+ $.cookie('selected_offer');	
+							});
+							$('#search-field').keyup(function (e) {
+								$.post('search/' + $.cookie('selected_type') + '/', {
+									phrase: $(this).val(),
+									csrfmiddlewaretoken: $.cookie('csrftoken') 
+								}, function(data) {
+									$('div#offers-list').html(data);
+									$('li.offer').on('click', function (e) {
+										$(this).addClass('active');
+										$(this).siblings().removeClass('active');
+										$('#create-event-bttn').removeAttr("disabled");
+										$('#plan-road-bttn').removeAttr('disabled');
+										$.cookie('selected_offer',
+											$(this).data('offer-id'));
+									});
+								});
 							});
 							$('#plan-road-bttn').on('click', function (e) {
 								$('#organize-popup-2').bPopup().close()

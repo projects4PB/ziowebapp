@@ -1,8 +1,8 @@
 from django.views.generic.list import ListView
 
-from places.models import RestCentre
+from places.models import TouristObject
 
 
 class HomeView(ListView):
-    model = RestCentre
+    model = TouristObject
     template_name = "home/home.html"
