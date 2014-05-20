@@ -57,7 +57,7 @@ a:hover {
 }
 
 .boxed p, .boxed ul, .boxed ol {
-	line-height: 180%;
+	/*line-height: 180%;*/
 }
 
 .orange {
@@ -237,6 +237,160 @@ a:hover {
 	padding: 35px 0 0 20px;
 }
 
+form {
+	padding: 20px 0 0 0;
+	width: 500px;
+	margin: 0 auto;
+	margin-bottom: 120px;
+}
+
+form label {
+	display: inline-block; 
+	width: 80px;
+	padding-right: 30px; 
+}
+
+form p {
+	float: left;
+	clear: both;
+	width: 430px;
+}
+
+form input {
+	float: right;
+	margin-right: 84px;
+}
+
+form ul{
+	float:left;
+	margin-left: 90px;
+}
+
+form ul li{
+	padding-top: 10px;
+}
+
+form ul li label{
+	width: 180px;
+}
+
+form select{
+	vertical-align: top;
+}
+
+form p span{
+	float: left;
+	margin-top: 20px;
+}
+
+.registerLinks{
+	margin-top: 150px;
+	margin: 0 auto;
+	width: 500px;
+	margin-top: 150px;
+}
+
+form textarea{
+	float:	right;
+	width:	230px; 
+	margin-right: 80px;
+}
+
+form input[type="submit"] {
+	float:	left;
+}
+
+.searchDiv{
+	width: 500px;
+	margin-bottom: 50px;
+}
+
+.searchDiv label{
+	display: inline-block; 
+	width: 80px;
+	padding-right: 30px; 
+}
+
+.searchDiv input[type="text"]{
+	float:right; 
+	margin-right: 150px;
+}
+
+.searchDiv input[type="submit"]{
+}
+
+.obList{
+	margin-top: 80px;
+}
+
+.login_p {
+	width: 260px;
+	margin: 0 auto;
+}
+
+.userProfileDiv{
+	padding: 20px 0 0 0;
+	width: 500px;
+	margin: 0 auto;
+}
+
+.userProfileDiv strong{
+	display: inline-block; 
+	width: 120px;
+	padding-right: 30px;
+}
+
+.userProfileDiv img{
+}
+
+.header{
+	width:	400px;
+}
+
+.header img{
+	float:left;
+		width: 60px;
+	height: 60px;
+}
+
+.header h2{
+	float:right
+}
+
+#content ul{
+	list-style-type: none;
+}
+
+#content ul li{
+	width: 500px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	background: url('../gfx/img11.gif') repeat-x left bottom;
+}
+
+#content ul li img{
+	width: 100px; 
+	float: left;
+	padding-right: 20px;
+}
+
+.photoDiv{
+	float:left;
+	width: 80px;;
+}
+
+.DescribeDiv{a
+	float: right;
+	width: 400px;	
+}
+
+button,input[type="submit"] {
+	color: rgb(102, 102, 102);
+	font: bold 100% Georgia,"Times New Roman",Times,serif;
+	margin-bottom: 0.5em;
+}
+
+
 /* -------------------- Organize Popup --------------------- */
 .organize-popup div.popup-content {
 	padding: 15px;
@@ -267,4 +421,21 @@ a:hover {
 
 .organize-popup div#offers-list {
 	width: 500px;
+}
+
+
+
+/* ------------scrolPanel------------ */
+
+.container{
+    /*background: #000;*/
+    color: white;
+    width: 600px;
+    height:199px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.text{
+    height: 500px;
 }

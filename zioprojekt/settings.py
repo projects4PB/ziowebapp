@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'zioprojekt.wsgi.application'
 
 import dj_database_url
 DATABASES = {
-    'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
+	'default':dj_database_url.config(default='postgres://fvzpgzoneryvwy:q-uTVYGOav8ZwHU_nyLjfvk14R@ec2-54-247-125-187.eu-west-1.compute.amazonaws.com:5432/d2oorikqotkqpd')
 }
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
