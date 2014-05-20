@@ -32,6 +32,11 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'rest_framework',
     'registration',
+    'orderable',
+    'respite',
+    'easy_thumbnails',
+    'image_cropping',
+    'galleries',
     'south',
 )
 
@@ -54,7 +59,16 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'respite.middleware.HttpMethodOverrideMiddleware',
+    'respite.middleware.HttpPutMiddleware',
+    'respite.middleware.HttpPatchMiddleware',
+    'respite.middleware.JsonMiddleware',
 )
+
+from easy_thumbnails.conf import settings as thumbsettings
+THUMBNAIL_PROCESSORS = (
+    'image_cropping.thumbnail_processors.crop_corners',
+) + thumbsettings.THUMBNAIL_PROCESSORS
 
 ROOT_URLCONF = 'zioprojekt.urls'
 
@@ -88,6 +102,11 @@ REST_FRAMEWORK = {
     )
 }
 
+SOUTH_MIGRATION_MODULES = {
+    'easy_thumbnails': 'easy_thumbnails.south_migrations',
+}
+
+
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
@@ -107,6 +126,10 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
+
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, "../media")
 
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates'),
