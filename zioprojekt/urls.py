@@ -42,8 +42,6 @@ urlpatterns = patterns(
     url(r'^accounts/profile', ProfileView.as_view()),
     url(r'^accounts/', include('registration.backends.default.urls')),
     url(r'^accounts/', include('django.contrib.auth.urls')),
-    (r'^admin/galleries', include(
-        'galleries.urls', namespace='galleries', app_name='galleries')),
     url(r'^i18n/', include('django.conf.urls.i18n')),
 )
 

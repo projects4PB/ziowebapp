@@ -1,11 +1,1 @@
-{% load thumbnail %}
 {{ object.name }}
-{% if object.gallery %}
-<div id="gallery">
-	  <ul>
-	      {% for image in object.gallery.images.all %}
-		      <li><img src="{% thumbnail image.image 610x343 box=image.cropping crop detail %}" alt="" /></li>
-	      {% endfor %}
-    </ul>
-</div>
-{% endif %}

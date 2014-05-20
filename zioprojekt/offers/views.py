@@ -21,7 +21,8 @@ class SearchOffersView(View):
     def post(self, request, *args, **kwargs):
         """Returns proper offers"""
         phrase = self.request.POST.get('phrase', '')
-        tourist_objs = TouristObject.objects.search(phrase)
+
+        qs = Offer.objects.search(phrase)
 
         choiced_type = self.kwargs['type_slug']
 
@@ -29,11 +30,13 @@ class SearchOffersView(View):
             slug__iexact=choiced_type
         ).category.all()
 
-        tourist_objs = tourist_objs.filter(
+        tourist_objs = TouristObject.objects.filter(
             category__in=categories)
 
-        offers = Offer.objects.filter(
-            tourist_object__in=tourist_objs)
+        offers = qs.filter(tourist_object__in=tourist_objs)
+
+        if phrase == '':
+            offers = Offer.objects.all()
 
         return render(request, 'offers/search.html',
                       {'offers': offers})
