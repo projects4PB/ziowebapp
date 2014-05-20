@@ -69,3 +69,10 @@
 		});
 	});
 })(jQuery);
+
+$(function()
+{
+	$('.scroll-pane').jScrollPane();
+});
+	
+

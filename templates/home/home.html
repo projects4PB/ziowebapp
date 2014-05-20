@@ -1,9 +1,27 @@
 {% extends "base.html" %}
 
 {% block content %}
-<ul>
-	{% for tourist_obj in object_list %}
-	<li>{{ tourist_obj.name }}</li>
-	{% endfor %}
-</ul>
+<div class="boxed orange">
+	<h2 class="title3">Obiekty wypoczynkowe</h2>
+
+<div class="container">
+    <div class="text">
+			
+				<ul>
+					{% for tourist_obj in object_list %}
+						<li>
+							<img src="{{ STATIC_URL }}gfx/1.jpeg"
+							alt=""  />
+							<div class="DescribeDiv">
+								<a href="#">{{ tourist_obj.name }}</a>
+								<p>Cena: 50zl/osoba</p>
+								<p>Miejscowość: Augustów </p>
+							</div>
+						</li>
+					{% endfor %}
+				</ul>
+</div>
+</div>
+
+</div>
 {% endblock %}

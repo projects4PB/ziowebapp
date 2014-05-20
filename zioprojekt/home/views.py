@@ -1,6 +1,6 @@
 from django.views.generic.list import ListView
 
-from places.models import TouristObject
+from zioprojekt.places.models import TouristObject
 
 
 class HomeView(ListView):
