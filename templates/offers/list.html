@@ -9,8 +9,11 @@
 		<li class="offer" data-offer-id="{{ offer.pk }}">
 			<h3>{{ offer.name }}</h3>
 			<div class="offer-related">
-				<h4>Nazwa powiązanego obiektu: {{ offer.tourist_object.name }}</h4>
-				<p>Opis powiązanego obiektu: {{ offer.tourist_object.description }}</p>
+				Powiązany obiekt:
+				<a data-tourist-obj-pk="{{ offer.tourist_object.pk }}"
+					class="tourist-obj-link" href="#">
+					{{ offer.tourist_object.name }}
+				</a>
 			</div>
 			<span class="offer-desc">{{ offer.description }}</span>
 			<span class="offer-date">{{ offer.creation_date }}</span>

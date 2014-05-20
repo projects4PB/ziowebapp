@@ -1,4 +1,7 @@
+# -*- coding: utf-8 -*-
 from django.db import models
+
+from galleries.fields import GalleryForeignKey
 
 from djorm_pgfulltext.models import SearchManager
 from djorm_pgfulltext.fields import VectorField
@@ -42,6 +45,8 @@ class TouristObject(models.Model):
         max_length=255, verbose_name=u'adres', blank=True)
     city = models.ForeignKey(
         TouristObjectsCity, verbose_name=u'miejscowość')
+    gallery = GalleryForeignKey('galleries.Gallery', blank=True,
+                                null=True, on_delete=models.SET_NULL)
     creation_date = models.DateTimeField(
         auto_now_add=True, verbose_name=u'data utworzenia')
 
