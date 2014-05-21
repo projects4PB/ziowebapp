@@ -17,6 +17,6 @@
 		{% endfor %}
 	</ul>
 </ul>
-<a href="{% url 'create_note' object.pk %}">Dodaj notatkę do wydarzenia</a>
-<a href="{% url 'join_event' object.pk %}">Dołącz do wydarzenia</a>
+<a href="{% url 'create_note' object.pk %}" class="Orangebutton">Dodaj notatkę do wydarzenia</a>
+<a href="{% url 'join_event' object.pk %}" class="Orangebutton" id="joinLink">Dołącz do wydarzenia</a>
 {% endblock %}

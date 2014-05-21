@@ -389,7 +389,9 @@ form input[type="submit"] {
 	padding-right: 20px;
 }
 
-
+.joinToevent{
+	width: 100%;
+}
 
 .photoDiv{
 	float:left;
@@ -498,6 +500,7 @@ border:1px solid #ffad41; -webkit-border-radius: 3px; -moz-border-radius: 3px;bo
  background-image: -ms-linear-gradient(top, #ffc579, #fb9d23);
  background-image: -o-linear-gradient(top, #ffc579, #fb9d23);
  background-image: linear-gradient(to bottom, #ffc579, #fb9d23);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#ffc579, endColorstr=#fb9d23);
+margin-bottom: 10px;
 }
 
 .Orangebutton:hover{
@@ -532,4 +535,17 @@ body h2{
 
 #content form .errorlist{
 }
+
+#joinLink{
+	width: 97%;
+	text-align:center;
+	margin-bottom: 20px;
+}
+
+#content #events-list li{
+	padding-bottom: 5px;
+	padding-top:	5px;
+	background: none;
+}
+
 
