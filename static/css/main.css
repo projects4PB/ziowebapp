@@ -284,10 +284,17 @@ form p span{
 }
 
 .registerLinks{
-	margin-top: 150px;
-	margin: 0 auto;
+	margin-top: 240px;
 	width: 500px;
-	margin-top: 150px;
+	padding-left: 120px;
+}
+
+#id_facilities{
+	margin-left: 0;
+}
+
+#id_facilities label{
+	display: inline;
 }
 
 form textarea{
@@ -349,7 +356,7 @@ form input[type="submit"] {
 
 .header img{
 	float:left;
-		width: 60px;
+	width: 60px;
 	height: 60px;
 }
 
@@ -359,6 +366,14 @@ form input[type="submit"] {
 
 #content ul{
 	list-style-type: none;
+}
+
+#content ul ul{
+	list-style-type:circle	
+}
+
+#content ul ul li{
+	background: none;	
 }
 
 #content ul li{
@@ -373,6 +388,8 @@ form input[type="submit"] {
 	float: left;
 	padding-right: 20px;
 }
+
+
 
 .photoDiv{
 	float:left;
@@ -492,3 +509,27 @@ border:1px solid #ffad41; -webkit-border-radius: 3px; -moz-border-radius: 3px;bo
  background-image: -o-linear-gradient(top, #ffaf46, #e78404);
  background-image: linear-gradient(to bottom, #ffaf46, #e78404);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#ffaf46, endColorstr=#e78404);
 }
+
+body h2{
+	margin-left: 30px;
+}
+
+#content ul .membersLi{
+	background: none;
+	padding-bottom: 0px;
+}
+
+#content ul #object-participants li{
+	padding-bottom: 5px;
+	padding-top: 5px;
+}
+
+#content form .errorlist li{
+	background: none;
+	padding: 0;
+	color:red;	
+}
+
+#content form .errorlist{
+}
+
