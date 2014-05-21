@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-	<a href="{% url 'create_event' offer_pk %}">Utwórz wydarzenie wyjazdu</a>
+	<a href="{% url 'create_event' offer_pk %}" class="Orangebutton" id="joinLink">Utwórz wydarzenie wyjazdu</a>
 	<div id="map-canvas" style="float: left; width:700px; height: 500px"></div>
 	<div id="directionsPanel" style="float: right; width: 300;">
 		<form>

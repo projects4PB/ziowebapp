@@ -26,9 +26,10 @@
 <ul id="events-list">
 	{% for event in events %}
 		<li>
-			<a href="{{ event.get_absolute_url }}">
+			<h3><a href="{{ event.get_absolute_url }}">
 				{{ event.name }}
 			</a>
+			</h3>
 		</li>
 	{% endfor %}
 </ul>
