@@ -10,6 +10,8 @@ from .forms import EventForm
 
 from zioprojekt.offers.models import Offer
 
+from zioprojekt.notes.models import Note
+
 
 class JoinEventView(View):
     def get(self, request, *args, **kwargs):
@@ -29,6 +31,19 @@ class JoinEventView(View):
 class ShowEventView(DetailView):
     model = Event
     template_name = 'events/show.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(ShowEventView, self) \
+            .get_context_data(**kwargs)
+
+        notes = Note.objects.event_notes(
+            self.get_object())
+
+        context.update({
+            'notes': notes
+        })
+
+        return context
 
 
 class CreateEventView(CreateView):

@@ -10,6 +10,13 @@
 			<li>{{ participant.user.username }}</li>
 		{% endfor %}
 	</ul>
+	<li class="membersLi">Notatki związane z wydarzeniem</li>
+	<ul id="object-participants">
+		{% for note in notes %}
+			<li>{{ note.title }}: {{ note.content }}</li>
+		{% endfor %}
+	</ul>
 </ul>
+<a href="{% url 'create_note' object.pk %}">Dodaj notatkę do wydarzenia</a>
 <a href="{% url 'join_event' object.pk %}">Dołącz do wydarzenia</a>
 {% endblock %}

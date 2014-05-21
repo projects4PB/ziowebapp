@@ -2,6 +2,8 @@
 from django.core.urlresolvers import reverse
 from django.db import models
 
+from .managers import EventManager
+
 
 class Event(models.Model):
     """Note model"""
@@ -15,6 +17,7 @@ class Event(models.Model):
     name = models.CharField(max_length=255, verbose_name=u'nazwa')
     description = models.TextField(verbose_name=u'treść',
                                    blank=True, null=True)
+    objects = EventManager()
 
     def get_absolute_url(self):
         return reverse('show_event', args=[str(self.id)])
