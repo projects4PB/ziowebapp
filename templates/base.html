@@ -70,7 +70,7 @@
 			</div>
 			{% if request.user.is_authenticated %}
 				{% if not request.user.get_profile.is_owner %}
-					<button id="organize-button">Organizuj wyjazd</button>
+					<button id="organize-button" class="Orangebutton">Organizuj wyjazd</button>
 				{% endif %}
 			{% endif %}
 			{% block content %}{% endblock %}
