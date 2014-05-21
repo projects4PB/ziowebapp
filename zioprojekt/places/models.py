@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from django.core.urlresolvers import reverse
 from django.db import models
 
 from .managers import TouristObjectManager
@@ -48,6 +49,9 @@ class TouristObject(models.Model):
         auto_now_add=True, verbose_name=u'data utworzenia')
 
     objects = TouristObjectManager()
+
+    def get_absolute_url(self):
+        return reverse('tourist_object_detail', args=[str(self.id)])
 
     def __unicode__(self):
         return self.name

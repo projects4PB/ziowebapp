@@ -15,7 +15,8 @@ from zioprojekt.notes.views import CreateNoteView
 from zioprojekt.offers.views import CreateOfferView, \
     SearchOffersView
 
-from zioprojekt.events.views import CreateEventView
+from zioprojekt.events.views import CreateEventView, ShowEventView, \
+    JoinEventView
 
 from zioprojekt.choices.views import OffersListView
 
@@ -32,10 +33,15 @@ urlpatterns = patterns(
     url(r'^offers/list', OffersListView.as_view()),
     url(r'^places/create', CreateTouristObjectView.as_view()),
     url(r'^places/detail/(?P<pk>\d+)/',
-        TouristObjectDetailView.as_view()),
+        TouristObjectDetailView.as_view(),
+        name='tourist_object_detail'),
     url(r'^places/detail-ajax/(?P<pk>\d+)/',
         TouristObjectAjaxDetailView.as_view()),
+    url(r'^events/show/(?P<pk>\d+)/', ShowEventView.as_view(),
+        name='show_event'),
     url(r'^events/create/(?P<offer_pk>\d+)/', CreateEventView.as_view()),
+    url(r'^events/join/(?P<event_pk>\d+)/', JoinEventView.as_view(),
+        name='join_event'),
     url(r'^choices/offers-list/(?P<type_slug>[a-zA-Z0-9-_]+)/',
         OffersListView.as_view()),
     url(r'^offers/create', CreateOfferView.as_view()),

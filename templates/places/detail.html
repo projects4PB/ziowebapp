@@ -1,5 +1,18 @@
 {% extends "base.html" %}
 
 {% block content %}
-{{ object.name }}
+<h3>{{ object.name }}</h3>
+<ul>
+	<li><span>Opis:</span> {{ object.description }}</li>
+	<li><span>Kategoria:</span> {{ object.category.name }}</li>
+	<li class="ul-header">Udogodnienia</li>
+	<ul id="object-facilites">
+		{% for facility in object.facilities.all %}
+			<li>{{ facility.name }}</li>
+		{% endfor %}
+	</ul>
+	<li><span>Adres:</span> {{ object.address }}</li>
+	<li><span>Miejscowość:</span> {{ object.city }}</li>
+	<li><span>Data dodania:</span> {{ object.creation_date }}</li>
+</ul>
 {% endblock %}

@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from django.core.urlresolvers import reverse
 from django.db import models
 
 
@@ -6,7 +7,7 @@ class Event(models.Model):
     """Note model"""
     moderator = models.ForeignKey('accounts.UserProfile',
                                   verbose_name=u'moderator')
-    participants = models.ManyToManyField('registration.RegistrationProfile',
+    participants = models.ManyToManyField('accounts.UserProfile',
                                           related_name='event_participants',
                                           verbose_name=u'uczestnicy',
                                           blank=True, null=True)
@@ -14,6 +15,9 @@ class Event(models.Model):
     name = models.CharField(max_length=255, verbose_name=u'nazwa')
     description = models.TextField(verbose_name=u'treść',
                                    blank=True, null=True)
+
+    def get_absolute_url(self):
+        return reverse('show_event', args=[str(self.id)])
 
     def __unicode__(self):
         return self.name

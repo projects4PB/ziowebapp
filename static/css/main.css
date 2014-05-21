@@ -439,3 +439,7 @@ button,input[type="submit"] {
 .text{
     height: 500px;
 }
+
+#tourist-object-details {
+	width: 400px;
+}

@@ -6,22 +6,30 @@
 
 <div class="container">
     <div class="text">
-			
-				<ul>
-					{% for tourist_obj in object_list %}
-						<li>
-							<img src=""
-							alt=""  />
-							<div class="DescribeDiv">
-								<a href="#">{{ tourist_obj.name }}</a>
-								<p>Cena: 50zl/osoba</p>
-								<p>Miejscowość: Augustów </p>
-							</div>
-						</li>
-					{% endfor %}
-				</ul>
-</div>
+		<ul>
+			{% for tourist_obj in object_list %}
+				<li>
+					<div class="DescribeDiv">
+						<a href="{{ tourist_obj.get_absolute_url }}">
+							{{ tourist_obj.name }}
+						</a>
+						<p>{{ tourist_obj.description }}</p>
+					</div>
+				</li>
+			{% endfor %}
+		</ul>
+	</div>
 </div>
 
 </div>
+<h3>Ostatnio dodane wydarzenia</h3>
+<ul id="events-list">
+	{% for event in events %}
+		<li>
+			<a href="{{ event.get_absolute_url }}">
+				{{ event.name }}
+			</a>
+		</li>
+	{% endfor %}
+</ul>
 {% endblock %}

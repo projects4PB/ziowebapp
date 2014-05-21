@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h3>{{ object.name }}</h3>
+<ul>
+	<li><span>Opis:</span> {{ object.description }}</li>
+	<li class="ul-header">Uczestnicy wydarzenia</li>
+	<ul id="object-participants">
+		{% for participant in object.participants.all %}
+			<li>{{ participant.user.username }}</li>
+		{% endfor %}
+	</ul>
+</ul>
+<a href="{% url 'join_event' object.pk %}">Dołącz do wydarzenia</a>
+{% endblock %}
