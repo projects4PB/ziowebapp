@@ -5,6 +5,8 @@ from .forms import TouristObjectForm
 
 from .models import TouristObject
 
+from zioprojekt.offers.models import Offer
+
 
 class CreateTouristObjectView(CreateView):
     model = TouristObject
@@ -30,3 +32,21 @@ class TouristObjectDetailView(DetailView):
 class TouristObjectAjaxDetailView(TouristObjectDetailView):
     """Tourist object detail view"""
     template_name = 'places/detail_ajax.html'
+
+
+class PlanRoadView(DetailView):
+    model = Offer
+    template_name = 'places/road.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(PlanRoadView, self) \
+            .get_context_data(**kwargs)
+
+        offer = self.get_object()
+
+        context.update({
+            'obj_address': offer.tourist_object.address,
+            'offer_pk': offer.pk
+        })
+
+        return context

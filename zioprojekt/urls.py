@@ -21,7 +21,7 @@ from zioprojekt.events.views import CreateEventView, ShowEventView, \
 from zioprojekt.choices.views import OffersListView
 
 from zioprojekt.places.views import CreateTouristObjectView, \
-    TouristObjectDetailView, TouristObjectAjaxDetailView
+    TouristObjectDetailView, TouristObjectAjaxDetailView, PlanRoadView
 
 from registration.backends.default.views import RegistrationView
 
@@ -37,9 +37,13 @@ urlpatterns = patterns(
         name='tourist_object_detail'),
     url(r'^places/detail-ajax/(?P<pk>\d+)/',
         TouristObjectAjaxDetailView.as_view()),
+    url(r'^places/road/(?P<pk>\d+)/',
+        PlanRoadView.as_view(), name='plan_road'),
     url(r'^events/show/(?P<pk>\d+)/', ShowEventView.as_view(),
         name='show_event'),
-    url(r'^events/create/(?P<offer_pk>\d+)/', CreateEventView.as_view()),
+    url(r'^events/create/(?P<offer_pk>\d+)/',
+        CreateEventView.as_view(),
+        name='create_event'),
     url(r'^events/join/(?P<event_pk>\d+)/', JoinEventView.as_view(),
         name='join_event'),
     url(r'^choices/offers-list/(?P<type_slug>[a-zA-Z0-9-_]+)/',

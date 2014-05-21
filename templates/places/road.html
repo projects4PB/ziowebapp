@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<a href="{% url 'create_event' offer_pk %}">Utwórz wydarzenie wyjazdu</a>
+	<div id="map-canvas" style="float: left; width:700px; height: 500px"></div>
+	<div id="directionsPanel" style="float: right; width: 300;">
+		<form>
+			skad:<input type="text" id="road-from" value="{{ request.user.get_profile.address }}"/> <br> 
+			dokad:<input type="text" id="road-to" value="{{ obj_address }}"/><br>
+			spalanie na 100km:<input type="text" id="spalanie" value="10"/> <br> 
+			cena paliwa:<input type="text" id="cenaPaliwa" value="6" /><br> 
+			<input type="button" id="calc-button" value="Przelicz trasę" />
+			<small>&nbsp;&nbsp;&nbsp;&#8593;Uzupenij pola,<br>&nbsp;&nbsp;&nbsp; &#8593;a nastepnie kliknij przycisk</small>
+		</form>
+		<p>
+			Całkowity dystans: <span id="total"></span>
+		</p>
+	</div>
+{% endblock %}

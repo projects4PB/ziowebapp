@@ -2,6 +2,78 @@
 
 ;(function($) {
 	$(function() {
+		var directionsDisplay;
+		var directionsService;
+		var map;
+		var poland;
+		function mapa()
+		{
+			var rendererOptions = {
+					draggable : true
+				};
+				directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
+				
+				directionsService = new google.maps.DirectionsService();
+
+				poland = new google.maps.LatLng(52.274398, 19.775136);
+		}
+
+		function initialize() {
+			var mapOptions = {
+				zoom : 7,
+				center : poland
+			};
+			map = new google.maps.Map(document.getElementById('map-canvas'),
+					mapOptions);
+			directionsDisplay.setMap(map);
+			directionsDisplay.setPanel(document.getElementById('directionsPanel'));
+
+			google.maps.event.addListener(directionsDisplay, 'directions_changed',
+					function() {
+						computeTotalDistance(directionsDisplay.getDirections());
+					});		
+		}
+
+		function calcRoute() {
+			var request = {
+				origin : document.getElementById('road-from').value,
+				destination : document.getElementById('road-to').value,
+				
+				travelMode : google.maps.TravelMode.DRIVING
+			};
+			directionsService.route(request, function(response, status) {
+				if (status == google.maps.DirectionsStatus.OK) {
+					directionsDisplay.setDirections(response);
+				}
+			});
+		}
+
+		function computeTotalDistance(result) {
+			var total = 0;
+			var cenaPaliwa = document.getElementById('cenaPaliwa').value;
+			var spalanie = document.getElementById('spalanie').value;
+			var paliwo;
+			var koszt;
+			var myroute = result.routes[0];
+			for (var i = 0; i < myroute.legs.length; i++) {
+				total += myroute.legs[i].distance.value;
+			}
+			total = total / 1000.0;
+			paliwo=total/100.0*spalanie;
+			paliwo=Math.round( paliwo * 100 ) / 100;
+			koszt=paliwo*cenaPaliwa;
+			document.getElementById('total').innerHTML ='dystans:' + total
+				+ ' km, paliwo: ' + paliwo + ' l, koszt: ' +koszt + ' zl';
+		}
+		mapa();
+		if($('#road-from').val() != undefined & $('#road-to').val() != undefined) {
+			initialize();
+			calcRoute();
+		}
+		$('#calc-button').click(function (e) {
+			initialize();
+			calcRoute();
+		});
 		$('.organize-popup').hide()
 		$('#organize-button').bind('click', function(e) {
 			$('#organize-popup-1').bPopup({
@@ -47,20 +119,16 @@
 							});
 							$('.tourist-obj-link').click(function (e) {
 								var touristObjPK = $(this).data('tourist-obj-pk');
-								$('#organize-popup-4').bPopup({
-									contentContainer:'#popup-content-4',
+								$('#organize-popup-3').bPopup({
+									contentContainer:'#popup-content-3',
 									loadUrl: '/places/detail-ajax/' + touristObjPK + '/',
 									loadCallback: function () {}
 								});
 							});
 							$('#plan-road-bttn').on('click', function (e) {
 								$('#organize-popup-2').bPopup().close()
-								$('#organize-popup-3').bPopup({
-									contentContainer:'#popup-content-3',
-									loadUrl: '/static/incs/plan_road.html',
-									loadCallback: function () {
-									}
-								});
+								top.location.href = "/places/road/"
+									+ $.cookie('selected_offer');	
 							});
 						}
 					});
