@@ -1,5 +1,18 @@
 {% extends "base.html" %}
 
 {% block content %}
-PROFIL
+{% if request.user.is_authenticated %}
+	<ul id="profile-details">
+		<li><span>Login:</span> {{ request.user.username }}</li>
+		<li><span>E-mail:</span> {{ request.user.email }}</li>
+		<li><span>Adres:</span> {{ request.user.get_profile.address }}</li>
+	</ul>
+	{% if request.user.get_profile.is_owner %}
+		<ul id="user-objs-list">
+		{% for tourist_obj in request.user.get_profile.tourist_object_set %}
+			<li>{{ tourist_obj.name }}</li>
+		</ul>
+		{% endfor %}
+	{% endif %}
+{% endif %}
 {% endblock %}

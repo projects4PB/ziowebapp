@@ -17,7 +17,6 @@
 			</div>
 			<!-- end header -->
 			<div id="menu">
-				<button id="organize-button">Organizuj wyjazd</button>
 				<div id="organize-popup-1" class="organize-popup">
 					<div id="popup-content-1" class="popup-content"></div>
 				</div>
@@ -35,27 +34,29 @@
 					<li class="first" >
 						<a href="/">Strona główna</a>
 					</li>
-					<li>
-						<a href="/places/create">Dodawanie obiektu</a>
-					</li>
-					<li>
-						<a href="/offers/create">Dodawanie oferty</a>
-					</li>
-					<li>
-						<a href="/notes/create">Dodawanie notatki</a>
-					</li>
-					<li>
-						<a href="/events/create">Dodawanie wydarzenia</a>
-					</li>
-					<li>
-						<a href="/accounts/register">Rejestracja</a>
-					</li>
-					<li>
-						<a href="/accounts/login">Logowanie</a>
-					</li>
-					<li>
-						<a href="/search">Szukaj</a>
-					</li>
+					{% if not request.user.is_authenticated %}
+						<li>
+							<a href="/accounts/register">Rejestracja</a>
+						</li>
+						<li>
+							<a href="/accounts/login">Logowanie</a>
+						</li>
+					{% else %}
+						<li>
+							<a href="/accounts/profile">Konto [{{ request.user.username }}]</a>
+						</li>
+						{% if request.user.get_profile.is_owner %}
+							<li>
+								<a href="/places/create">Dodawanie obiektu</a>
+							</li>
+							<li>
+								<a href="/offers/create">Dodawanie oferty</a>
+							</li>
+						{% endif %}
+						<li>
+							<a href="/accounts/logout">Wyloguj</a>
+						</li>
+					{% endif %}
 				</ul>
 				{% endblock %}
 			</div>
@@ -67,6 +68,11 @@
 				<img src="{{ STATIC_URL }}gfx/img08.jpg"
 					alt="" width="740" height="220" />
 			</div>
+			{% if request.user.is_authenticated %}
+				{% if not request.user.get_profile.is_owner %}
+					<button id="organize-button">Organizuj wyjazd</button>
+				{% endif %}
+			{% endif %}
 			{% block content %}{% endblock %}
 		  </div>
 		  <!-- end content -->

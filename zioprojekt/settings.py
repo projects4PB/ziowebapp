@@ -32,11 +32,11 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'rest_framework',
     'registration',
-    'watson',
     'south',
 )
 
 INSTALLED_APPS += (
+    'zioprojekt.accounts',
     'zioprojekt.events',
     'zioprojekt.offers',
     'zioprojekt.notes',
@@ -117,7 +117,7 @@ TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates'),
 )
 
-AUTH_PROFILE_MODULE = 'registration.RegistrationProfile'
+AUTH_PROFILE_MODULE = 'accounts.UserProfile'
 
 ACCOUNT_ACTIVATION_DAYS = 7
 

@@ -3,6 +3,8 @@ from django.shortcuts import render
 from django.views.generic.base import View
 from django.views.generic.edit import CreateView
 
+from .forms import OfferForm
+
 from .models import Offer
 
 from zioprojekt.places.models import TouristObject
@@ -12,7 +14,18 @@ from zioprojekt.choices.models import TripTypeChoice
 class CreateOfferView(CreateView):
     model = Offer
     template_name = 'offers/create.html'
+    form_class = OfferForm
     success_url = '/'
+
+    def get_form_kwargs(self):
+        kwargs = super(CreateOfferView, self) \
+            .get_form_kwargs()
+
+        kwargs.update({
+            'profile': self.request.user.get_profile()
+        })
+
+        return kwargs
 
 
 class SearchOffersView(View):

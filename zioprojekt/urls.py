@@ -8,6 +8,7 @@ from zioprojekt.home.views import HomeView
 from zioprojekt.webservice.views import NotesListWS
 
 from zioprojekt.accounts.views import ProfileView
+from zioprojekt.accounts.forms import UserRegistrationForm
 
 from zioprojekt.notes.views import CreateNoteView
 
@@ -20,6 +21,8 @@ from zioprojekt.choices.views import OffersListView
 
 from zioprojekt.places.views import CreateTouristObjectView, \
     TouristObjectDetailView, TouristObjectAjaxDetailView
+
+from registration.backends.default.views import RegistrationView
 
 urlpatterns = patterns(
     '',
@@ -40,6 +43,9 @@ urlpatterns = patterns(
     url(r'^search/(?P<type_slug>[a-zA-Z0-9-_]+)/',
         SearchOffersView.as_view()),
     url(r'^accounts/profile', ProfileView.as_view()),
+    url(r'^accounts/register/$', RegistrationView.as_view(
+        form_class=UserRegistrationForm),
+        name='registration_register'),
     url(r'^accounts/', include('registration.backends.default.urls')),
     url(r'^accounts/', include('django.contrib.auth.urls')),
     url(r'^i18n/', include('django.conf.urls.i18n')),

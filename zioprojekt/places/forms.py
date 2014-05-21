@@ -12,3 +12,4 @@ class TouristObjectForm(forms.ModelForm):
 
     class Meta:
         model = TouristObject
+        exclude = ('owner',)

@@ -4,7 +4,7 @@ from django.db import models
 
 class Event(models.Model):
     """Note model"""
-    moderator = models.ForeignKey('registration.RegistrationProfile',
+    moderator = models.ForeignKey('accounts.UserProfile',
                                   verbose_name=u'moderator')
     participants = models.ManyToManyField('registration.RegistrationProfile',
                                           related_name='event_participants',

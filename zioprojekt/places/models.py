@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from django.db import models
 
+from .managers import TouristObjectManager
+
 
 class Facilities(models.Model):
     """Facilities model"""
@@ -28,6 +30,8 @@ class TouristObjectsCity(models.Model):
 
 class TouristObject(models.Model):
     """Tourist object model"""
+    owner = models.ForeignKey(
+        'accounts.UserProfile', verbose_name=u'właściciel ośrodka')
     name = models.CharField(max_length=255, verbose_name=u'nazwa')
     description = models.TextField(verbose_name=u'opis obiektu')
     facilities = models.ManyToManyField(
@@ -43,14 +47,11 @@ class TouristObject(models.Model):
     creation_date = models.DateTimeField(
         auto_now_add=True, verbose_name=u'data utworzenia')
 
+    objects = TouristObjectManager()
+
     def __unicode__(self):
         return self.name
 
     class Meta:
         verbose_name = u'obiekt turystyczny'
         verbose_name_plural = u'obiekty turystyczne'
-
-
-import watson
-
-watson.register(TouristObject)
