@@ -21,7 +21,10 @@ class UserProfile(models.Model):
 def user_registered_callback(sender, user, request, **kwargs):
     profile = UserProfile(user=user)
     profile.address = request.POST["address"]
-    profile.is_owner = bool(request.POST["is_owner"])
+    if request.POST["is_owner"] == u'True':
+        profile.is_owner = True
+    else:
+        profile.is_owner = False
     profile.save()
 
 user_registered.connect(user_registered_callback)
