@@ -1,5 +1,11 @@
+import mimetypes
+
+from django.views.generic.base import View
 from django.views.generic.edit import CreateView
 from django.views.generic.detail import DetailView
+from django.http import Http404, HttpResponse
+
+from database_storage import DatabaseStorage
 
 from .forms import TouristObjectForm
 
@@ -50,3 +56,24 @@ class PlanRoadView(DetailView):
         })
 
         return context
+
+
+class StorageImageView(View):
+    def get(self, request, *args, **kwargs):
+        DBS_OPTIONS = {
+            'table': 'places_images',
+            'base_url': '/storage_images/',
+        }
+
+        filename = self.kwargs['filename']
+        storage = DatabaseStorage(DBS_OPTIONS)
+        image_file = storage.open(filename, 'rb')
+        if not image_file:
+            raise Http404
+        file_content = image_file.read()
+        content_type, content_encoding = mimetypes.guess_type(filename)
+        response = HttpResponse(content=file_content, mimetype=content_type)
+        response['Content-Disposition'] = 'inline; filename=%s' % filename
+        if content_encoding:
+            response['Content-Encoding'] = content_encoding
+        return response

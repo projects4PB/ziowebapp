@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load comments %}
+
 {% block content %}
 <h3>{{ object.name }}</h3>
 <ul>
@@ -15,4 +17,27 @@
 	<li><span>Miejscowość:</span> {{ object.city }}</li>
 	<li><span>Data dodania:</span> {{ object.creation_date }}</li>
 </ul>
+<h4>Galeria obiektu</h4>
+<ul id="object-images">
+	{% for image in object.touristobjectimage_set.all %}
+		<li>
+			<img src="{{ image.image.url }}" />
+			<p>{{ image.caption }}</p>
+		</li>
+	{% endfor %}
+</ul>
+<h4>Komentarze</h4>
+{% get_comment_form for object as form %}
+<table>
+	<form action="{% comment_form_target %}" method="post">
+		<input type="hidden" name="next" value="#" />
+		{% csrf_token %}
+		{{ form }}
+		<tr>
+			<td colspan="2">
+				<input type="submit" name="submit" value="Wyślij">
+			</td>
+		</tr>
+	</form>
+</table>
 {% endblock %}

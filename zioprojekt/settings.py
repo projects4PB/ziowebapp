@@ -27,9 +27,12 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
+    'django.contrib.comments',
+    'django.contrib.sites',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'djangoratings',
     'rest_framework',
     'registration',
     'south',
@@ -112,6 +115,8 @@ STATICFILES_DIRS = (
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "../media")
+
+IMG_STORAGE_URL = '/storage_images/'
 
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates'),

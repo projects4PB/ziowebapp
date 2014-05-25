@@ -21,7 +21,8 @@ from zioprojekt.events.views import CreateEventView, ShowEventView, \
 from zioprojekt.choices.views import OffersListView
 
 from zioprojekt.places.views import CreateTouristObjectView, \
-    TouristObjectDetailView, TouristObjectAjaxDetailView, PlanRoadView
+    TouristObjectDetailView, TouristObjectAjaxDetailView, PlanRoadView, \
+    StorageImageView
 
 from registration.backends.default.views import RegistrationView
 
@@ -57,8 +58,11 @@ urlpatterns = patterns(
     url(r'^accounts/register/$', RegistrationView.as_view(
         form_class=UserRegistrationForm),
         name='registration_register'),
+    url(r'^comments/', include('django.contrib.comments.urls')),
     url(r'^accounts/', include('registration.backends.default.urls')),
     url(r'^accounts/', include('django.contrib.auth.urls')),
+    url(r'^storage_images/(?P<filename>[a-zA-Z0-9-._/]+)',
+        StorageImageView.as_view()),
     url(r'^i18n/', include('django.conf.urls.i18n')),
 )
 
