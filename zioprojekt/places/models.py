@@ -2,6 +2,10 @@
 from django.core.urlresolvers import reverse
 from django.db import models
 
+from djangoratings.fields import RatingField
+
+from database_storage import DatabaseStorage
+
 from .managers import TouristObjectManager
 
 
@@ -47,6 +51,7 @@ class TouristObject(models.Model):
         TouristObjectsCity, verbose_name=u'miejscowość')
     creation_date = models.DateTimeField(
         auto_now_add=True, verbose_name=u'data utworzenia')
+    rating = RatingField(range=5, verbose_name=u'ocena')
 
     objects = TouristObjectManager()
 
@@ -59,3 +64,17 @@ class TouristObject(models.Model):
     class Meta:
         verbose_name = u'obiekt turystyczny'
         verbose_name_plural = u'obiekty turystyczne'
+
+
+class TouristObjectImage(models.Model):
+    DBS_OPTIONS = {
+        'table': 'places_images',
+        'base_url': '/storage_images/',
+    }
+
+    tourist_object = models.ForeignKey(
+        TouristObject, verbose_name=u'obiekt turystyczny')
+    image = models.ImageField(upload_to='places/',
+                              storage=DatabaseStorage(DBS_OPTIONS),
+                              verbose_name=u'zdjęcie')
+    caption = models.CharField(max_length=255, verbose_name=u'podpis')
