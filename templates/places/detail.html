@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% load comments %}
+{% load ratings %}
 
 {% block content %}
 <h3>{{ object.name }}</h3>
@@ -27,17 +28,43 @@
 	{% endfor %}
 </ul>
 <h4>Komentarze</h4>
+{% render_comment_list for object %}
 {% get_comment_form for object as form %}
-<table>
-	<form action="{% comment_form_target %}" method="post">
-		<input type="hidden" name="next" value="#" />
-		{% csrf_token %}
-		{{ form }}
-		<tr>
-			<td colspan="2">
-				<input type="submit" name="submit" value="Wyślij">
-			</td>
-		</tr>
-	</form>
-</table>
+<form action="{% comment_form_target %}" method="post">{% csrf_token %}
+  <input type="hidden" name="next" value="{{ object.get_absolute_url }}" />
+  {% for field in form %}
+  {% if field.name == "name" or field.name == "email" or field.name == "url"%}
+  {% else %}
+    {% if field.is_hidden %}
+      <div>{{ field }}</div>
+    {% else %}
+      {% if field.errors %}{{ field.errors }}{% endif %}
+      <p
+        {% if field.errors %} class="error"{% endif %}
+        {% ifequal field.name "honeypot" %} style="display:none;"{% endifequal %}>
+        {{ field.label_tag }} {{ field }}
+      </p>
+    {% endif %}
+  {% endif %}
+  {% endfor %}
+  <p class="submit">
+    <input id="post-comment-bttn" type="submit" name="post"
+		class="submit-post" value="Wyślij" />
+  </p>
+</form>
+<h4>Oceń obiekt</h4>
+<p>Aktualna ocena obiektu: {{ object.rating.get_rating }}</p>
+{% rating_by_user user on object.rating as vote %}
+{% if vote %}
+	<p>Twoja ocena: {{ vote }}
+{% else %}
+	<div id="voting-messages"></div>
+	<div id="vote-choices">
+		<a class="vote-link" data-vote="1" data-obj-id="{{ object.pk }}" href="javascript:;">1</a>
+		<a class="vote-link" data-vote="2" data-obj-id="{{ object.pk }}" href="javascript:;">2</a>
+		<a class="vote-link" data-vote="3" data-obj-id="{{ object.pk }}" href="javascript:;">3</a>
+		<a class="vote-link" data-vote="4" data-obj-id="{{ object.pk }}" href="javascript:;">4</a>
+		<a class="vote-link" data-vote="5" data-obj-id="{{ object.pk }}" href="javascript:;">5</a>
+	</div>
+{% endif %}
 {% endblock %}

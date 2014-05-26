@@ -24,6 +24,8 @@ from zioprojekt.places.views import CreateTouristObjectView, \
     TouristObjectDetailView, TouristObjectAjaxDetailView, PlanRoadView, \
     StorageImageView
 
+from djangoratings.views import AddRatingFromModel
+
 from registration.backends.default.views import RegistrationView
 
 urlpatterns = patterns(
@@ -41,6 +43,12 @@ urlpatterns = patterns(
         TouristObjectAjaxDetailView.as_view()),
     url(r'^places/road/(?P<pk>\d+)/',
         PlanRoadView.as_view(), name='plan_road'),
+    url(r'^places/rate/(?P<object_id>\d+)/(?P<score>\d+)/',
+        AddRatingFromModel(), {
+            'app_label': 'places',
+            'model': 'touristobject',
+            'field_name': 'rating',
+        }, name='rate_place'),
     url(r'^events/show/(?P<pk>\d+)/', ShowEventView.as_view(),
         name='show_event'),
     url(r'^events/create/(?P<offer_pk>\d+)/',

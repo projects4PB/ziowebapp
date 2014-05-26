@@ -74,6 +74,26 @@
 			initialize();
 			calcRoute();
 		});
+		$('#post-comment-bttn').click(function (e) {
+			if(!$('#id_comment').val()) {
+				e.preventDefault();
+			}
+		});
+		$('.vote-link').click(function (e) {
+			$.ajax('/places/rate/' + $(this).data('obj-id') + '/'
+				+ $(this).data('vote') + '/', {
+					csrfmiddlewaretoken: $.cookie('csrftoken'),
+					statusCode: {
+						403: function (data) {
+							$('#voting-messages').text('Oddałeś już głos na ten obiekt');
+						},
+						200: function (data) {
+							$('#voting-messages').text('Twoja ocena została zapisana w bazie');
+							$('#vote-choices').hide();
+						}
+					}
+				});
+		});
 		$('.organize-popup').hide()
 		$('#organize-button').bind('click', function(e) {
 			$('#organize-popup-1').bPopup({
