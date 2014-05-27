@@ -47,9 +47,9 @@ a:hover {
 	margin: 0;
 	padding: 10px 0;
 	background: url('../gfx/img11.gif') repeat-x left bottom;
-	font-size: 129%;
-	font-weight: normal;
-	color: #FFFFFF;
+	font-size: 20px;
+	font-weight: bold;
+	color: #5F9BD1;
 }
 
 .boxed {
@@ -64,6 +64,8 @@ a:hover {
 	margin: 20px 30px;
 	background: #FF9523 url('../gfx/img10.gif') repeat-x;
 	color: #FFFFFF;
+	border-radius:20px;
+	border: 5px #5F9BD1 solid;
 }
 
 .orange a {
@@ -379,8 +381,7 @@ form input[type="submit"] {
 #content ul li{
 	width: 500px;
 	padding-top: 20px;
-	padding-bottom: 20px;
-	background: url('../gfx/img11.gif') repeat-x left bottom;
+	/*background: url('../gfx/img11.gif') repeat-x left bottom;*/
 }
 
 #content ul li img{
@@ -398,9 +399,8 @@ form input[type="submit"] {
 	width: 80px;;
 }
 
-.DescribeDiv{a
-	float: right;
-	width: 400px;	
+.DescribeDiv a{
+	font-size: 15px;
 }
 
 button,input[type="submit"] {
@@ -473,13 +473,6 @@ button,input[type="submit"] {
     /*background: #000;*/
     color: white;
     width: 600px;
-    height:199px;
-    overflow-x: hidden;
-    overflow-y: auto;
-}
-
-.text{
-    height: 500px;
 }
 
 #tourist-object-details {
@@ -547,5 +540,57 @@ body h2{
 	padding-top:	5px;
 	background: none;
 }
+
+.divEvents{
+	background: #85C329 url('../gfx/img04.gif') repeat-x;
+	margin: 20px 30px;
+	color: #FFFFFF;
+	border-radius:20px;
+	border: 5px #5F9BD1 solid;
+	padding-left: 20px;
+}
+
+.objectDiv{
+	margin: 20px 30px;
+	background: #FF9523 url('../gfx/img10.gif') repeat-x;
+	color: #FFFFFF;
+	border-radius:20px;
+	border: 5px #5F9BD1 solid;
+	padding-left: 30px;
+}
+
+.objectDiv textarea{
+	background-color: #ffa723;
+}
+
+.objectDiv h4{
+	margin-top: 70px;
+	margin-left: 40px;
+}
+.objectDiv #id_comment{
+	width:350px;
+	height:100px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	margin-left: 20px;
+}
+
+.objectDiv form{
+	margin: 0 0;
+	padding-left: 10px;
+	width: 500px;
+}
+
+.objectDiv p, #voting-messages{
+	float:	none;
+	margin-left: 40px;
+}
+
+.objectDiv form label{
+
+}
+
+
+
 
 
