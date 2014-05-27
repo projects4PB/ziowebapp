@@ -4,9 +4,10 @@
 {% load ratings %}
 
 {% block content %}
-<h3>{{ object.name }}</h3>
+<div class="objectDiv">
+<h2 class=title3>{{ object.name }}</h2>
 <ul>
-	<li><span>Opis:</span> {{ object.description }}</li>
+	<li><h3>Opis:</h3> {{ object.description }}</li>
 	<li><span>Kategoria:</span> {{ object.category.name }}</li>
 	<li class="ul-header">Udogodnienia</li>
 	<ul id="object-facilites">
@@ -49,7 +50,7 @@
   {% endfor %}
   <p class="submit">
     <input id="post-comment-bttn" type="submit" name="post"
-		class="submit-post" value="Wyślij" />
+		class="Orangebutton" value="Wyślij" />
   </p>
 </form>
 <h4>Oceń obiekt</h4>
@@ -69,4 +70,5 @@
 		</div>
 	{% endif %}
 {% endif %}
+</div>
 {% endblock %}
