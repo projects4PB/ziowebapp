@@ -3,11 +3,11 @@ import mimetypes
 from django.views.generic.base import View
 from django.views.generic.edit import CreateView
 from django.views.generic.detail import DetailView
-from django.http import Http404, HttpResponse
+from django.http import Http404, HttpResponse, HttpResponseRedirect
 
 from database_storage import DatabaseStorage
 
-from .forms import TouristObjectForm
+from .forms import TouristObjectForm, ObjectImagesFormSet
 
 from .models import TouristObject
 
@@ -20,13 +20,40 @@ class CreateTouristObjectView(CreateView):
     template_name = 'places/add_object_form.html'
     success_url = '/'
 
-    def form_valid(self, form):
-        object = form.save(commit=False)
-        object.owner = self.request.user.get_profile()
-        object.save()
+    def get(self, request, *args, **kwargs):
+        self.object = None
+        form_class = self.get_form_class()
+        form = self.get_form(form_class)
+        image_form = ObjectImagesFormSet()
 
-        return super(CreateTouristObjectView, self) \
-            .form_valid(form)
+        return self.render_to_response(
+            self.get_context_data(
+                form=form, image_form=image_form))
+
+    def post(self, request, *args, **kwargs):
+        self.object = None
+        form_class = self.get_form_class()
+        form = self.get_form(form_class)
+        image_form = ObjectImagesFormSet(
+            self.request.POST, self.request.FILES)
+        if image_form.is_valid() and form.is_valid():
+            return self.form_valid(form, image_form)
+        else:
+            return self.form_invalid(form, image_form)
+
+    def form_valid(self, form, image_form):
+        self.object = form.save(commit=False)
+        self.object.owner = self.request.user.get_profile()
+        self.object.save()
+        image_form.instance = self.object
+        image_form.save()
+
+        return HttpResponseRedirect(self.get_success_url())
+
+    def form_invalid(self, form, image_form):
+        return self.render_to_response(
+            self.get_context_data(
+                form=form, image_form=image_form))
 
 
 class TouristObjectDetailView(DetailView):

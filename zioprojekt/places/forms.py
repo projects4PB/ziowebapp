@@ -1,6 +1,7 @@
 from django import forms
+from django.forms.models import inlineformset_factory
 
-from .models import Facilities, TouristObject
+from .models import Facilities, TouristObject, TouristObjectImage
 
 
 class TouristObjectForm(forms.ModelForm):
@@ -13,3 +14,7 @@ class TouristObjectForm(forms.ModelForm):
     class Meta:
         model = TouristObject
         exclude = ('owner',)
+
+ObjectImagesFormSet = inlineformset_factory(
+    TouristObject, TouristObjectImage,
+    form=TouristObjectForm, extra=5)

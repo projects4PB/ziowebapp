@@ -55,18 +55,20 @@
 </form>
 <h4>Oceń obiekt</h4>
 <p>Aktualna ocena obiektu: {{ object.rating.get_rating }}</p>
-{% rating_by_user user on object.rating as vote %}
-{% if vote %}
-	<p>Twoja ocena: {{ vote }}
-{% else %}
-	<div id="voting-messages"></div>
-	<div id="vote-choices">
-		<a class="vote-link" data-vote="1" data-obj-id="{{ object.pk }}" href="javascript:;">1</a>
-		<a class="vote-link" data-vote="2" data-obj-id="{{ object.pk }}" href="javascript:;">2</a>
-		<a class="vote-link" data-vote="3" data-obj-id="{{ object.pk }}" href="javascript:;">3</a>
-		<a class="vote-link" data-vote="4" data-obj-id="{{ object.pk }}" href="javascript:;">4</a>
-		<a class="vote-link" data-vote="5" data-obj-id="{{ object.pk }}" href="javascript:;">5</a>
-	</div>
+{% if user.is_authenticated %}
+	{% rating_by_user user on object.rating as vote %}
+	{% if vote %}
+		<p>Twoja ocena: {{ vote }}
+	{% else %}
+		<div id="voting-messages"></div>
+		<div id="vote-choices">
+			<a class="vote-link" data-vote="1" data-obj-id="{{ object.pk }}" href="javascript:;">1</a>
+			<a class="vote-link" data-vote="2" data-obj-id="{{ object.pk }}" href="javascript:;">2</a>
+			<a class="vote-link" data-vote="3" data-obj-id="{{ object.pk }}" href="javascript:;">3</a>
+			<a class="vote-link" data-vote="4" data-obj-id="{{ object.pk }}" href="javascript:;">4</a>
+			<a class="vote-link" data-vote="5" data-obj-id="{{ object.pk }}" href="javascript:;">5</a>
+		</div>
+	{% endif %}
 {% endif %}
 </div>
 {% endblock %}
