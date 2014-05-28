@@ -50,7 +50,7 @@
   {% endfor %}
   <p class="submit">
     <input id="post-comment-bttn" type="submit" name="post"
-		class="Orangebutton" value="Wyślij" />
+		class="Bluebutton" value="Wyślij" />
   </p>
 </form>
 <h4>Oceń obiekt</h4>
@@ -61,12 +61,12 @@
 		<p>Twoja ocena: {{ vote }}
 	{% else %}
 		<div id="voting-messages"></div>
-		<div id="vote-choices">
-			<a class="vote-link" data-vote="1" data-obj-id="{{ object.pk }}" href="javascript:;">1</a>
-			<a class="vote-link" data-vote="2" data-obj-id="{{ object.pk }}" href="javascript:;">2</a>
-			<a class="vote-link" data-vote="3" data-obj-id="{{ object.pk }}" href="javascript:;">3</a>
-			<a class="vote-link" data-vote="4" data-obj-id="{{ object.pk }}" href="javascript:;">4</a>
-			<a class="vote-link" data-vote="5" data-obj-id="{{ object.pk }}" href="javascript:;">5</a>
+		<div class="vote-choices">
+			<a class="vote-link" data-vote="1" data-obj-id="{{ object.pk }}" href="javascript:;">☆</a>
+			<a class="vote-link" data-vote="2" data-obj-id="{{ object.pk }}" href="javascript:;">☆</a>
+			<a class="vote-link" data-vote="3" data-obj-id="{{ object.pk }}" href="javascript:;">☆</a>
+			<a class="vote-link" data-vote="4" data-obj-id="{{ object.pk }}" href="javascript:;">☆</a>
+			<a class="vote-link" data-vote="5" data-obj-id="{{ object.pk }}" href="javascript:;">☆</a>
 		</div>
 	{% endif %}
 {% endif %}

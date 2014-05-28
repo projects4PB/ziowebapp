@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="boxed orange">
 <form action="" method="post">{% csrf_token %}
 	{{ form.as_p }}
-	<input type="submit" value="Dodaj wydarzenie" />
+	<input type="submit" value="Dodaj wydarzenie"class="Bluebutton2" />
 </form>
+</div>
 {% endblock %}
