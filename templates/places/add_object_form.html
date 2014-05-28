@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="boxed orange">
 <form action="" method="post" enctype="multipart/form-data">
 	{% csrf_token %}
 	{{ form.as_p }}
@@ -20,6 +21,7 @@
 			</div>
 		{% endfor %}
 	</fieldset>
-	<input type="submit" value="Dodaj obiekt" />
+	<input type="submit" value="Dodaj obiekt" class="Bluebutton" />
 </form>
+</div>
 {% endblock %}
