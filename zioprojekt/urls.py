@@ -22,7 +22,7 @@ from zioprojekt.choices.views import OffersListView
 
 from zioprojekt.places.views import CreateTouristObjectView, \
     TouristObjectDetailView, TouristObjectAjaxDetailView, PlanRoadView, \
-    StorageImageView
+    StorageImageView, TouristObjectUpdateView
 
 from djangoratings.views import AddRatingFromModel
 
@@ -39,6 +39,9 @@ urlpatterns = patterns(
     url(r'^places/detail/(?P<pk>\d+)/',
         TouristObjectDetailView.as_view(),
         name='tourist_object_detail'),
+    url(r'^places/edit/(?P<pk>\d+)/',
+        TouristObjectUpdateView.as_view(),
+        name='tourist_object_update'),
     url(r'^places/detail-ajax/(?P<pk>\d+)/',
         TouristObjectAjaxDetailView.as_view()),
     url(r'^places/road/(?P<pk>\d+)/',

@@ -9,9 +9,14 @@
 		<li><span>Adres:</span> {{ request.user.get_profile.address }}</li>
 	</ul>
 	{% if request.user.get_profile.is_owner %}
+		<h3>Moje obiekty</h3>
 		<ul id="user-objs-list">
-		{% for tourist_obj in request.user.get_profile.tourist_object_set %}
-			<li>{{ tourist_obj.name }}</li>
+		{% for tourist_obj in request.user.get_profile.touristobject_set.all %}
+			<li>
+				<a href="{{ tourist_obj.get_absolute_url }}">{{ tourist_obj.name }}</a>
+				<a href="{% url "tourist_object_update" tourist_obj.pk %}">edytuj</a>
+				<a href="{{ tourist_obj.get_absolute_url }}">usuń</a>
+			</li>
 		</ul>
 		{% endfor %}
 	{% else %}
