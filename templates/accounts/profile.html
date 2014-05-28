@@ -15,7 +15,7 @@
 			<li>
 				<a href="{{ tourist_obj.get_absolute_url }}">{{ tourist_obj.name }}</a>
 				<a href="{% url "tourist_object_update" tourist_obj.pk %}">edytuj</a>
-				<a href="{{ tourist_obj.get_absolute_url }}">usuń</a>
+				<a href="{% url "tourist_object_delete" tourist_obj.pk %}">usuń</a>
 			</li>
 		</ul>
 		{% endfor %}

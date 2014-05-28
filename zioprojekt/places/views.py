@@ -1,7 +1,7 @@
 import mimetypes
 
 from django.views.generic.base import View
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.detail import DetailView
 from django.http import Http404, HttpResponse, HttpResponseRedirect
 
@@ -69,8 +69,16 @@ class TouristObjectAjaxDetailView(TouristObjectDetailView):
 
 class TouristObjectUpdateView(UpdateView):
     """Tourist object update view"""
-    model = TouristObjectForm
-    template_name = 'places/edit'
+    model = TouristObject
+    form_class = TouristObjectForm
+    template_name = 'places/edit.html'
+
+
+class TouristObjectDeleteView(DeleteView):
+    """Tourist object delete view"""
+    model = TouristObject
+    template_name = 'places/delete.html'
+    success_url = '/'
 
 
 class PlanRoadView(DetailView):
