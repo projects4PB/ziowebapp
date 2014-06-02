@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load thumbnail %}
+
 {% block content %}
 <div class="boxed orange">
 	<h2 class="title3">Obiekty wypoczynkowe</h2>
@@ -10,9 +12,14 @@
 			{% for tourist_obj in object_list %}
 				<li>
 					<div class="DescribeDiv">
-						<a href="{{ tourist_obj.get_absolute_url }}">
-							{{ tourist_obj.name }}
-						</a>
+						{% with tourist_obj.touristobjectimage_set.all.0.image as image %}
+							{% thumbnail image "100x100" as img %}
+								<img class="image-popup" data-image-url="{{ image.url }}" src="{{ img.url }}" alt="">
+							{% endthumbnail %}
+							<a href="{{ tourist_obj.get_absolute_url }}">
+								{{ tourist_obj.name }}
+							</a>
+						{% endwith %}
 						<p>{{ tourist_obj.description }}</p>
 					</div>
 				</li>

@@ -1,5 +1,7 @@
+# -*- coding: utf-8 -*-
 import mimetypes
 
+from django.contrib import messages
 from django.views.generic.base import View
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.detail import DetailView
@@ -47,6 +49,10 @@ class CreateTouristObjectView(CreateView):
         self.object.save()
         image_form.instance = self.object
         image_form.save()
+
+        messages.add_message(
+            self.request, messages.INFO,
+            'Obiekt turystyczny został poprawnie utworzony')
 
         return HttpResponseRedirect(self.get_success_url())
 

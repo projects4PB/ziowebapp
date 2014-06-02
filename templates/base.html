@@ -26,6 +26,9 @@
 				<div id="organize-popup-3" class="organize-popup">
 					<div id="popup-content-3" class="popup-content"></div>
 				</div>
+				<div id="image-popup">
+					<div id="image-content"></div>
+				</div>
 				{% block menu %}
 				<ul>
 					<li class="first" >
@@ -64,6 +67,15 @@
 			<div>
 				<img src="{{ STATIC_URL }}gfx/img08.jpg"
 					alt="" width="740" height="220" />
+			</div>
+			<div id="user-messages">
+				{% if messages %}
+					<ul class="messages">
+						{% for message in messages %}
+							<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+						{% endfor %}
+					</ul>
+				{% endif %}
 			</div>
 			{% if request.user.is_authenticated %}
 				{% if not request.user.get_profile.is_owner %}

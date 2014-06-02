@@ -17,6 +17,11 @@ class UserProfile(models.Model):
     def __unicode__(self):
         return self.user.username
 
+    def is_participant(self, event):
+        if self in event.participants.all():
+            return True
+        return False
+
 
 def user_registered_callback(sender, user, request, **kwargs):
     profile = UserProfile(user=user)

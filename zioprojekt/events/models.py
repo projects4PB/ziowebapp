@@ -17,6 +17,8 @@ class Event(models.Model):
     name = models.CharField(max_length=255, verbose_name=u'nazwa')
     description = models.TextField(verbose_name=u'treść',
                                    blank=True, null=True)
+    creation_date = models.DateTimeField(
+        auto_now_add=True, verbose_name=u'data utworzenia')
     objects = EventManager()
 
     def get_absolute_url(self):
