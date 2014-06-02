@@ -77,4 +77,5 @@ class TouristObjectImage(models.Model):
     image = models.ImageField(upload_to='places/',
                               storage=DatabaseStorage(DBS_OPTIONS),
                               verbose_name=u'zdjęcie')
-    caption = models.CharField(max_length=255, verbose_name=u'podpis')
+    caption = models.CharField(max_length=255, verbose_name=u'podpis',
+                               blank=True, null=True)
