@@ -11,3 +11,8 @@ class EventManager(models.Manager):
                 related_events.append(event)
 
         return related_events
+
+
+class EventJoinOfferManager(models.Manager):
+    def active(self):
+        return self.filter(accepted=False)

@@ -16,7 +16,7 @@ from zioprojekt.offers.views import CreateOfferView, \
     SearchOffersView
 
 from zioprojekt.events.views import CreateEventView, ShowEventView, \
-    JoinEventView
+    JoinEventOfferView, LeaveEventView, AddParticipantView
 
 from zioprojekt.choices.views import OffersListView
 
@@ -60,8 +60,13 @@ urlpatterns = patterns(
     url(r'^events/create/(?P<offer_pk>\d+)/',
         CreateEventView.as_view(),
         name='create_event'),
-    url(r'^events/join/(?P<event_pk>\d+)/', JoinEventView.as_view(),
+    url(r'^events/join/(?P<event_pk>\d+)/(?P<profile_pk>\d+)/',
+        AddParticipantView.as_view(),
         name='join_event'),
+    url(r'^events/offer/(?P<event_pk>\d+)/', JoinEventOfferView.as_view(),
+        name='join_event_offer'),
+    url(r'^events/leave/(?P<event_pk>\d+)/', LeaveEventView.as_view(),
+        name='leave_event'),
     url(r'^choices/offers-list/(?P<type_slug>[a-zA-Z0-9-_]+)/',
         OffersListView.as_view()),
     url(r'^offers/create', CreateOfferView.as_view()),
