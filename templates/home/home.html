@@ -13,9 +13,7 @@
 				<li>
 					<div class="DescribeDiv">
 						{% with tourist_obj.touristobjectimage_set.all.0.image as image %}
-							{% thumbnail image "100x100" as img %}
-								<img class="image-popup" data-image-url="{{ image.url }}" src="{{ img.url }}" alt="">
-							{% endthumbnail %}
+							<img class="image-popup" data-image-url="{{ image.url }}" src="{{ image.url }}" alt="">
 							<a href="{{ tourist_obj.get_absolute_url }}">
 								{{ tourist_obj.name }}
 							</a>

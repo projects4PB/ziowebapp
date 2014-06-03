@@ -24,9 +24,8 @@
 <ul id="object-images">
 	{% for image in object.touristobjectimage_set.all %}
 		<li>
-			{% thumbnail image.image "250x250" as img %}
-				<img class="image-popup" data-image-url="{{ image.image.url }}" src="{{ img.url }}" alt="">
-			{% endthumbnail %}
+			<img class="image-popup" data-image-url="{{ image.image.url }}"
+				src="{{ image.image.url }}" alt="">
 			<p>{{ image.caption }}</p>
 		</li>
 	{% endfor %}

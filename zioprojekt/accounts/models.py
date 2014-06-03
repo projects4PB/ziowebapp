@@ -22,6 +22,11 @@ class UserProfile(models.Model):
             return True
         return False
 
+    def is_moderator(self, event):
+        if self == event.moderator:
+            return True
+        return False
+
 
 def user_registered_callback(sender, user, request, **kwargs):
     profile = UserProfile(user=user)

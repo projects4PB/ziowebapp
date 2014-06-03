@@ -8,12 +8,14 @@
 <ul>
 	<li><span>Opis:</span> {{ object.description }}</li>
 	<li class="membersLi">Oferty dołączenia do wydarzenia</li>
-	<ul id="object-participants-offers">
-		{% for offer in object.eventjoinoffer_set.active %}
-			<li>{{ offer.participant.user.username }}</li>
-			<a href="{% url 'join_event' object.pk offer.participant.pk %}">akceptuj</a>
-		{% endfor %}
-	</ul>
+	{% if user.get_profile and user.get_profile|is_moderator:object %}
+		<ul id="object-participants-offers">
+			{% for offer in object.eventjoinoffer_set.active %}
+				<li>{{ offer.participant.user.username }}</li>
+					<a href="{% url 'join_event' object.pk offer.participant.pk %}">akceptuj</a>
+			{% endfor %}
+		</ul>
+	{% endif %}
 	<li class="membersLi">Uczestnicy wydarzenia</li>
 	<ul id="object-participants">
 		{% for participant in object.participants.all %}
