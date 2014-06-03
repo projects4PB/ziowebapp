@@ -1,7 +1,9 @@
+# -*- coding: utf-8 -*-
 import mimetypes
 
+from django.contrib import messages
 from django.views.generic.base import View
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.detail import DetailView
 from django.http import Http404, HttpResponse, HttpResponseRedirect
 
@@ -48,6 +50,10 @@ class CreateTouristObjectView(CreateView):
         image_form.instance = self.object
         image_form.save()
 
+        messages.add_message(
+            self.request, messages.INFO,
+            'Obiekt turystyczny został poprawnie utworzony')
+
         return HttpResponseRedirect(self.get_success_url())
 
     def form_invalid(self, form, image_form):
@@ -69,8 +75,16 @@ class TouristObjectAjaxDetailView(TouristObjectDetailView):
 
 class TouristObjectUpdateView(UpdateView):
     """Tourist object update view"""
-    model = TouristObjectForm
-    template_name = 'places/edit'
+    model = TouristObject
+    form_class = TouristObjectForm
+    template_name = 'places/edit.html'
+
+
+class TouristObjectDeleteView(DeleteView):
+    """Tourist object delete view"""
+    model = TouristObject
+    template_name = 'places/delete.html'
+    success_url = '/'
 
 
 class PlanRoadView(DetailView):

@@ -2,6 +2,7 @@
 
 {% load comments %}
 {% load ratings %}
+{% load thumbnail %}
 
 {% block content %}
 <div class="objectDiv">
@@ -23,7 +24,8 @@
 <ul id="object-images">
 	{% for image in object.touristobjectimage_set.all %}
 		<li>
-			<img src="{{ image.image.url }}" />
+			<img class="image-popup" data-image-url="{{ image.image.url }}"
+				src="{{ image.image.url }}" alt="">
 			<p>{{ image.caption }}</p>
 		</li>
 	{% endfor %}

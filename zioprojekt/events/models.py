@@ -2,11 +2,11 @@
 from django.core.urlresolvers import reverse
 from django.db import models
 
-from .managers import EventManager
+from .managers import EventManager, EventJoinOfferManager
 
 
 class Event(models.Model):
-    """Note model"""
+    """Event model"""
     moderator = models.ForeignKey('accounts.UserProfile',
                                   verbose_name=u'moderator')
     participants = models.ManyToManyField('accounts.UserProfile',
@@ -17,6 +17,8 @@ class Event(models.Model):
     name = models.CharField(max_length=255, verbose_name=u'nazwa')
     description = models.TextField(verbose_name=u'treść',
                                    blank=True, null=True)
+    creation_date = models.DateTimeField(
+        auto_now_add=True, verbose_name=u'data utworzenia')
     objects = EventManager()
 
     def get_absolute_url(self):
@@ -28,3 +30,14 @@ class Event(models.Model):
     class Meta:
         verbose_name = u'Wydarzenie'
         verbose_name_plural = u'Wydarzenia'
+
+
+class EventJoinOffer(models.Model):
+    """Event join offer model"""
+    participant = models.ForeignKey('accounts.UserProfile',
+                                    verbose_name=u'uczestnik')
+    event = models.ForeignKey(Event, verbose_name=u'wydarzenie')
+    accepted = models.BooleanField(
+        verbose_name=u'status oferty', default=False)
+
+    objects = EventJoinOfferManager()

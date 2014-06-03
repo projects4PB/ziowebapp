@@ -94,6 +94,13 @@
 					}
 				});
 		});
+		$('.image-popup').click(function (e) {
+			$('#image-popup').bPopup({
+				content: 'image',
+				contentContainer: '#image-content',
+				loadUrl: $(this).data('image-url')
+			});
+		});
 		$('.organize-popup').hide()
 		$('#organize-button').bind('click', function(e) {
 			$('#organize-popup-1').bPopup({

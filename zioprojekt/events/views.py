@@ -1,31 +1,73 @@
-from django.shortcuts import render
+# -*- coding: utf-8 -*-
+from django.shortcuts import render, redirect
 
+from django.contrib import messages
 from django.views.generic.base import View
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
 
-from .models import Event
+from .models import Event, EventJoinOffer
 
 from .forms import EventForm
+
+from zioprojekt.accounts.models import UserProfile
 
 from zioprojekt.offers.models import Offer
 
 from zioprojekt.notes.models import Note
 
 
-class JoinEventView(View):
+class JoinEventOfferView(View):
     def get(self, request, *args, **kwargs):
         event = Event.objects.get(id=self.kwargs['event_pk'])
 
-        participants = event.participants.all()
+        offers = EventJoinOffer.objects.filter(
+            event=event, participant=request.user.get_profile(),
+            accepted=False)
 
-        if not self.request.user.get_profile() in participants:
-            event.participants.add(self.request.user.get_profile())
+        if not offers:
+            join_offer = EventJoinOffer(
+                participant=request.user.get_profile(), event=event)
+
+            join_offer.save()
 
             return render(request, 'events/join_success.html', {})
 
         else:
             return render(request, 'events/join_failure.html', {})
+
+
+class AddParticipantView(View):
+    def get(self, request, *args, **kwargs):
+        event = Event.objects.get(id=self.kwargs['event_pk'])
+
+        participant = UserProfile.objects.get(id=self.kwargs['profile_pk'])
+        event.participants.add(participant)
+
+        offer = EventJoinOffer.objects.get(
+            event=event, participant=participant, accepted=False)
+
+        offer.accepted = True
+        offer.save()
+
+        messages.add_message(
+            request, messages.INFO,
+            'Użytkownik został poprawnie dodany do wydarzenia')
+
+        return redirect('/')
+
+
+class LeaveEventView(View):
+    def get(self, request, *args, **kwargs):
+        event = Event.objects.get(id=self.kwargs['event_pk'])
+
+        event.participants.remove(request.user.get_profile())
+
+        messages.add_message(
+            request, messages.INFO,
+            'Zostałeś poprawnie wypisany z wydarzenia')
+
+        return redirect('/')
 
 
 class ShowEventView(DetailView):

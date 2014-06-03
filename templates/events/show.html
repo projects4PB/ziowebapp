@@ -1,10 +1,21 @@
 {% extends "base.html" %}
 
+{% load accounts_tags %}
+
 {% block content %}
 <div class="boxed orange">
 <h2>{{ object.name }}</h2>
 <ul>
 	<li><span>Opis:</span> {{ object.description }}</li>
+	<li class="membersLi">Oferty dołączenia do wydarzenia</li>
+	{% if user.get_profile and user.get_profile|is_moderator:object %}
+		<ul id="object-participants-offers">
+			{% for offer in object.eventjoinoffer_set.active %}
+				<li>{{ offer.participant.user.username }}</li>
+					<a href="{% url 'join_event' object.pk offer.participant.pk %}">akceptuj</a>
+			{% endfor %}
+		</ul>
+	{% endif %}
 	<li class="membersLi">Uczestnicy wydarzenia</li>
 	<ul id="object-participants">
 		{% for participant in object.participants.all %}
@@ -18,7 +29,13 @@
 		{% endfor %}
 	</ul>
 </ul>
-<a href="{% url 'create_note' object.pk %}" class="Bluebutton2">Dodaj notatkę do wydarzenia</a>
-<a href="{% url 'join_event' object.pk %}" class="Bluebutton2" id="joinLink">Dołącz do wydarzenia</a>
-</div>s
+{% if user.get_profile and user.get_profile|is_participant:object %}
+	<a href="{% url 'create_note' object.pk %}" class="Bluebutton2">Dodaj notatkę do wydarzenia</a>
+	<a href="{% url 'leave_event' object.pk %}" class="Bluebutton2">Wypisz się z wydarzenia</a>
+{% else %}
+	{% if user.get_profile and not user.get_profile.is_owner %}
+		<a href="{% url 'join_event_offer' object.pk %}" class="Bluebutton2" id="joinLink">Dołącz do wydarzenia</a>
+	{% endif %}
+{% endif %}
+</div>
 {% endblock %}
