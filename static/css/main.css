@@ -72,6 +72,10 @@ a:hover {
 	color: #FFFFFF;
 }
 
+.orange h3{
+	margin-left:40px;
+}
+
 .col-one {
 	float: left;
 	width: 300px;
@@ -724,6 +728,20 @@ dd{
 	border-radius:20px;
 	border: 5px  solid;
 	padding-left: 20px;
+}
+
+#user-objs-list{
+	padding-top:20px;
+}
+
+
+.obiekt{
+	padding-top:10px;
+}
+
+.obiekt a{
+	margin-left:10px;
+	float:right;
 }
 
 

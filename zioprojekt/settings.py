@@ -37,7 +37,6 @@ INSTALLED_APPS = (
     'djangoratings',
     'rest_framework',
     'registration',
-    'sorl.thumbnail',
     'south',
 )
 

@@ -12,7 +12,7 @@
 		<h3>Moje obiekty</h3>
 		<ul id="user-objs-list">
 		{% for tourist_obj in request.user.get_profile.touristobject_set.all %}
-			<li>
+			<li class="obiekt">
 				<a href="{{ tourist_obj.get_absolute_url }}">{{ tourist_obj.name }}</a>
 				<a href="{% url "tourist_object_update" tourist_obj.pk %}">edytuj</a>
 				<a href="{{ tourist_obj.get_absolute_url }}">usuń</a>
