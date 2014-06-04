@@ -164,3 +164,14 @@
 		});
 	});
 })(jQuery);
+
+$( document ).ready(function() {
+	$(".DescribeDiv").children('img').map(function(){
+		if($(this).attr('src') == ''){
+			$(this).attr('src', "/storage_images/places/augustowurycha71361800x600.JPG");
+		}
+	})
+	
+});
+
+

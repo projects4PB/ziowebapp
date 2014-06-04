@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="boxed orange">
 <form action="" method="post">{% csrf_token %}
 	<p>Czy na pewno usunąć obiekt?</p>
-	<input type="submit" value="Confirm" />
+	<input type="submit" value="Confirm" class="Bluebutton" />
 </form>
+</div>
 {% endblock %}

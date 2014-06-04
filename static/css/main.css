@@ -73,7 +73,7 @@ a:hover {
 }
 
 .orange h3{
-	margin-left:40px;
+	margin-left: 5px;
 }
 
 .col-one {
@@ -400,6 +400,7 @@ background-image: -webkit-gradient(linear, left top, left bottom, from(#49c0f0),
 #content ul{
 	list-style-type: none;
 	margin: 0px 2px 2px 0px;
+	padding-left: 5px;
 }
 
 #content ul ul{
@@ -474,7 +475,7 @@ button,input[type="submit"] {
 }
 
 /*--------------------messages------------------*/
-.success, .error{
+.success, .error, .info{
 	border: 1px solid;
 	margin: 10px 0px;
 	padding:15px 10px 15px 50px;
@@ -484,7 +485,7 @@ button,input[type="submit"] {
 	font-size:13px;
 }
 
-.success {
+.success, .info {
 	color: #4F8A10;
 	background-color: #DFF2BF;
 	background-image:url('../gfx/success.png');
@@ -596,8 +597,8 @@ body h2{
 	background: none;
 	padding: 0;
 	color:red;	
-	margin-left: 75px;
-	margin-right: 200px;
+	margin-left: 107px;
+	margin-bottom: 10px;
 }
 
 #content form .errorlist{
@@ -730,24 +731,41 @@ dd{
 	padding-left: 20px;
 }
 
-#user-objs-list{
-	padding-top:20px;
-}
 
-
-.obiekt{
-	padding-top:10px;
-}
-
-.obiekt a{
-	margin-left:10px;
-	float:right;
-}
 
 #search-field {
 	background: #e6e2df;
 }
 
-.image-popup {
-	cursor: pointer;
+#object-images img{
+	height: 250px;
 }
+
+.DescribeDiv{
+	overflow: hidden;
+    	width: 600px;
+    	padding: 20px;
+}
+
+
+.DescribeDiv p {
+    float: right;
+    width: 380px;
+}
+
+
+.DescribeDiv img{
+	height: 150px;
+	float:left;
+	min-width: 200px;
+}
+
+.obiekt{
+	padding-top:5px;
+}
+
+.obiekt .optionLink{
+	float:right;
+	padding-right:40px;
+}
+
