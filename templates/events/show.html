@@ -3,6 +3,9 @@
 {% load accounts_tags %}
 
 {% block content %}
+{% if user.get_profile and user.get_profile|is_moderator:object %}
+	<a href="{% url 'plan_road' object.pk %}" class="Bluebutton2">Planuj trasę</a>
+{% endif %}
 <div class="boxed orange">
 <h2>{{ object.name }}</h2>
 <ul>
@@ -33,7 +36,7 @@
 	<a href="{% url 'create_note' object.pk %}" class="Bluebutton2">Dodaj notatkę do wydarzenia</a>
 	<a href="{% url 'leave_event' object.pk %}" class="Bluebutton2">Wypisz się z wydarzenia</a>
 {% else %}
-	{% if user.get_profile and not user.get_profile.is_owner %}
+	{% if user.get_profile and not user.get_profile.is_owner and not user.get_profile|is_moderator:object %}
 		<a href="{% url 'join_event_offer' object.pk %}" class="Bluebutton2" id="joinLink">Dołącz do wydarzenia</a>
 	{% endif %}
 {% endif %}

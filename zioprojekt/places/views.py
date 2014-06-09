@@ -13,7 +13,7 @@ from .forms import TouristObjectForm, ObjectImagesFormSet
 
 from .models import TouristObject
 
-from zioprojekt.offers.models import Offer
+from zioprojekt.events.models import Event
 
 
 class CreateTouristObjectView(CreateView):
@@ -88,18 +88,18 @@ class TouristObjectDeleteView(DeleteView):
 
 
 class PlanRoadView(DetailView):
-    model = Offer
+    model = Event
     template_name = 'places/road.html'
 
     def get_context_data(self, **kwargs):
         context = super(PlanRoadView, self) \
             .get_context_data(**kwargs)
 
-        offer = self.get_object()
+        event = self.get_object()
 
         context.update({
-            'obj_address': offer.tourist_object.address,
-            'offer_pk': offer.pk
+            'obj_address': event.offer.tourist_object.address,
+            'event_pk': event.pk,
         })
 
         return context

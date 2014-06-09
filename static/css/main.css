@@ -465,13 +465,22 @@ button,input[type="submit"] {
 }
 
 .organize-popup li.active {
+	border: 1px solid;
 	background: #ccc;
 }
 
 .organize-popup div#offers-list {
 	width: 500px;
-	height: 600px;
+	height: 400px;
 	overflow-y: auto;
+}
+
+div#offers-list li.offer {
+	padding: 15px;
+}
+
+div#offers-list li.offer:hover {
+	background: #e6e6e6;
 }
 
 /*--------------------messages------------------*/
@@ -701,11 +710,9 @@ body h2{
 #image-form label{
 	padding-left: 30px;
 }
-b
-body #map-canvas{
-	margin-left:40px;
-	margin-top:20px;
-	margin-bottom: 20px;
+#map-canvas{
+	display: block;
+	margin: 20px auto;
 }
 
 #createEventLink{

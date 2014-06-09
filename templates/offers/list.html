@@ -6,7 +6,9 @@
 <div id="offers-list">
 	<ul>
 		{% for offer in object_list %}
-		<li class="offer" data-offer-id="{{ offer.pk }}">
+		<li class="offer tooltip" data-offer-id="{{ offer.pk }}"
+			title="Kliknij na ofertę aby ja wybrać, po czym przejdz do
+				tworzenia wydarzenia klikając na przyscisk pod listą">
 			<h3>{{ offer.name }}</h3>
 			<div class="offer-related">
 				Powiązany obiekt:
@@ -22,4 +24,3 @@
 	</ul>
 </div>
 <button type="button" id="create-event-bttn">UTWÓRZ WYDARZENIE WYJAZDU</button>
-<button type="button" id="plan-road-bttn">PLANUJ TRASĘ</button>

@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 from django.shortcuts import render, redirect
-
 from django.contrib import messages
 from django.views.generic.base import View
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
+from django.core.urlresolvers import reverse
 
 from .models import Event, EventJoinOffer
 
@@ -92,7 +92,9 @@ class CreateEventView(CreateView):
     model = Event
     template_name = 'events/create.html'
     form_class = EventForm
-    success_url = '/'
+
+    def get_success_url(self):
+        return reverse('show_event', args=[self.object.pk])
 
     def form_valid(self, form):
         offer = Offer.objects.get(id=self.kwargs['offer_pk'])
@@ -101,5 +103,9 @@ class CreateEventView(CreateView):
         object.moderator = self.request.user.get_profile()
         object.offer = offer
         object.save()
+
+        messages.add_message(
+            self.request, messages.INFO,
+            'Wydarzenie zostało poprawnie utworzone')
 
         return super(CreateEventView, self).form_valid(form)

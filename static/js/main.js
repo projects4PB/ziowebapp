@@ -66,6 +66,7 @@
 				+ ' km, paliwo: ' + paliwo + ' l, koszt: ' +koszt + ' zl';
 		}
 		mapa();
+		$('.tooltip').tooltipster();
 		if($('#road-from').val() != undefined & $('#road-to').val() != undefined) {
 			initialize();
 			calcRoute();
@@ -107,6 +108,7 @@
 				contentContainer:'#popup-content-1',
 				loadUrl: '/static/incs/organize.html',
 			}, function () {
+				$('.tooltip').tooltipster();
 				$('li', '#choices-list').on('click', function(e) {
 					$.cookie('selected_type', $(this).data('trip-type'));
 					$('#organize-popup-1').bPopup().close()
@@ -114,13 +116,12 @@
 						contentContainer:'#popup-content-2',
 						loadUrl: '/choices/offers-list/' + $.cookie('selected_type'),
 						loadCallback: function () {
+							$('.tooltip').tooltipster();
 							$('#create-event-bttn').attr("disabled", "disabled");
-							$('#plan-road-bttn').attr("disabled", "disabled");
 							$('li.offer').on('click', function (e) {
 								$(this).addClass('active');
 								$(this).siblings().removeClass('active');
 								$('#create-event-bttn').removeAttr("disabled");
-								$('#plan-road-bttn').removeAttr('disabled');
 								$.cookie('selected_offer',
 									$(this).data('offer-id'));
 							});
@@ -151,11 +152,6 @@
 									loadUrl: '/places/detail-ajax/' + touristObjPK + '/',
 									loadCallback: function () {}
 								});
-							});
-							$('#plan-road-bttn').on('click', function (e) {
-								$('#organize-popup-2').bPopup().close()
-								top.location.href = "/places/road/"
-									+ $.cookie('selected_offer');	
 							});
 						}
 					});

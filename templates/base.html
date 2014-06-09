@@ -8,6 +8,7 @@
 			{% endblock %}
 		</title>
 		<link rel="stylesheet" href="{{ STATIC_URL }}css/main.css" />
+		<link rel="stylesheet" href="{{ STATIC_URL }}css/tooltipster.css" />
 	</head>
 	<body>
 		<div id="page">
@@ -77,11 +78,6 @@
 					</ul>
 				{% endif %}
 			</div>
-			{% if request.user.is_authenticated %}
-				{% if not request.user.get_profile.is_owner %}
-					<button id="organize-button" class="Orangebutton">Organizuj wyjazd</button>
-				{% endif %}
-			{% endif %}
 			{% block content %}{% endblock %}
 		  </div>
 		  <!-- end content -->
@@ -95,6 +91,7 @@
 		<script src="{{ STATIC_URL }}js/jquery/jquery.cookie.js"></script>
 		<script src="{{ STATIC_URL }}js/jquery/jquery.bpopup.js"></script>
 		<script src="{{ STATIC_URL }}js/jquery/jquery.jscrollpane.js"></script>
+		<script src="{{ STATIC_URL }}js/jquery/jquery.tooltipster.min.js"></script>
 		<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
 		<script src="{{ STATIC_URL }}js/main.js"></script>
 	</body>

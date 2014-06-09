@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
-	<a href="{% url 'create_event' offer_pk %}" class="Orangebutton" id="createEventLink">Utwórz wydarzenie wyjazdu</a>
-	<div id="map-canvas" style="float: left; width:660px; height: 500px"></div>
-	<div id="directionsPanel" style="float: right; width: 300;" class="boxed orange">
+	<a href="{% url 'show_event' event_pk %}" class="Bluebutton2">Powrót do strony wydarzenia</a>
+	<div id="map-canvas" style="width:660px; height: 500px"></div>
+	<div id="directionsPanel" style="width: 300;" class="boxed orange">
 		<form>
 			<p><label>skad:</label><input type="text" id="road-from" value="{{ request.user.get_profile.address }}"/></p> 
 			<p><label>dokad:</label><input type="text" id="road-to" value="{{ obj_address }}"/></p>
