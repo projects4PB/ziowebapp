@@ -85,7 +85,7 @@ LANGUAGES = (
 )
 
 LOCALE_PATHS = (
-    '/home/adrian/heroku/zioprojekt/conf/locale/',
+    os.path.join(BASE_DIR, '../conf/locale'),
 )
 
 REST_FRAMEWORK = {

@@ -1,6 +1,9 @@
 from django.views.generic import TemplateView
+from django.views.generic.edit import UpdateView
 
 from zioprojekt.events.models import Event
+from zioprojekt.accounts.models import UserProfile
+from zioprojekt.accounts.forms import UserProfileForm
 
 
 class ProfileView(TemplateView):
@@ -18,3 +21,9 @@ class ProfileView(TemplateView):
         })
 
         return context
+
+
+class EditProfileView(UpdateView):
+    model = UserProfile
+    form_class = UserProfileForm
+    template_name = 'accounts/edit.html'

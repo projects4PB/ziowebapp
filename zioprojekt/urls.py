@@ -7,7 +7,7 @@ from zioprojekt.home.views import HomeView
 
 from zioprojekt.webservice.views import NotesListWS
 
-from zioprojekt.accounts.views import ProfileView
+from zioprojekt.accounts.views import ProfileView, EditProfileView
 from zioprojekt.accounts.forms import UserRegistrationForm
 
 from zioprojekt.notes.views import CreateNoteView
@@ -73,7 +73,9 @@ urlpatterns = patterns(
     url(r'^admin/', include(admin.site.urls)),
     url(r'^search/(?P<type_slug>[a-zA-Z0-9-_]+)/',
         SearchOffersView.as_view()),
-    url(r'^accounts/profile', ProfileView.as_view()),
+    url(r'^accounts/profile/edit/(?P<pk>\d+)/', EditProfileView.as_view(),
+        name='edit_profile'),
+    url(r'^accounts/profile', ProfileView.as_view(), name='profile_detail'),
     url(r'^accounts/register/$', RegistrationView.as_view(
         form_class=UserRegistrationForm),
         name='registration_register'),

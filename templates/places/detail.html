@@ -31,29 +31,31 @@
 </ul>
 <h4>Komentarze</h4>
 {% render_comment_list for object %}
-{% get_comment_form for object as form %}
-<form action="{% comment_form_target %}" method="post">{% csrf_token %}
-  <input type="hidden" name="next" value="{{ object.get_absolute_url }}" />
-  {% for field in form %}
-  {% if field.name == "name" or field.name == "email" or field.name == "url"%}
-  {% else %}
-    {% if field.is_hidden %}
-      <div>{{ field }}</div>
-    {% else %}
-      {% if field.errors %}{{ field.errors }}{% endif %}
-      <p
-        {% if field.errors %} class="error"{% endif %}
-        {% ifequal field.name "honeypot" %} style="display:none;"{% endifequal %}>
-        {{ field.label_tag }} {{ field }}
-      </p>
-    {% endif %}
-  {% endif %}
-  {% endfor %}
-  <p class="submit">
-    <input id="post-comment-bttn" type="submit" name="post"
-		class="Bluebutton" value="Wyślij" />
-  </p>
-</form>
+{% if user.is_authenticated %}
+	{% get_comment_form for object as form %}
+	<form action="{% comment_form_target %}" method="post">{% csrf_token %}
+	<input type="hidden" name="next" value="{{ object.get_absolute_url }}" />
+	{% for field in form %}
+	{% if field.name == "name" or field.name == "email" or field.name == "url"%}
+	{% else %}
+		{% if field.is_hidden %}
+		<div>{{ field }}</div>
+		{% else %}
+		{% if field.errors %}{{ field.errors }}{% endif %}
+		<p
+			{% if field.errors %} class="error"{% endif %}
+			{% ifequal field.name "honeypot" %} style="display:none;"{% endifequal %}>
+			{{ field.label_tag }} {{ field }}
+		</p>
+		{% endif %}
+	{% endif %}
+	{% endfor %}
+	<p class="submit">
+		<input id="post-comment-bttn" type="submit" name="post"
+			class="Bluebutton" value="Wyślij" />
+	</p>
+	</form>
+{% endif %}
 <h4>Oceń obiekt</h4>
 <p>Aktualna ocena obiektu: {{ object.rating.get_rating }}</p>
 {% if user.is_authenticated %}
@@ -63,11 +65,11 @@
 	{% else %}
 		<div id="voting-messages"></div>
 		<div class="vote-choices">
-			<a class="vote-link" data-vote="1" data-obj-id="{{ object.pk }}" href="javascript:;">☆</a>
-			<a class="vote-link" data-vote="2" data-obj-id="{{ object.pk }}" href="javascript:;">☆</a>
-			<a class="vote-link" data-vote="3" data-obj-id="{{ object.pk }}" href="javascript:;">☆</a>
-			<a class="vote-link" data-vote="4" data-obj-id="{{ object.pk }}" href="javascript:;">☆</a>
 			<a class="vote-link" data-vote="5" data-obj-id="{{ object.pk }}" href="javascript:;">☆</a>
+			<a class="vote-link" data-vote="4" data-obj-id="{{ object.pk }}" href="javascript:;">☆</a>
+			<a class="vote-link" data-vote="3" data-obj-id="{{ object.pk }}" href="javascript:;">☆</a>
+			<a class="vote-link" data-vote="2" data-obj-id="{{ object.pk }}" href="javascript:;">☆</a>
+			<a class="vote-link" data-vote="1" data-obj-id="{{ object.pk }}" href="javascript:;">☆</a>
 		</div>
 	{% endif %}
 {% endif %}
