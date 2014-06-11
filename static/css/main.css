@@ -254,6 +254,7 @@ form label {
 	/*display: inline-block; */
 	display: inline-block;
 	width: 80px;
+	font-size: 14px;
 	/*padding-right: 30px; */
 }
 
@@ -404,7 +405,8 @@ background-image: -webkit-gradient(linear, left top, left bottom, from(#49c0f0),
 }
 
 #content ul ul{
-	list-style-type:circle	
+	list-style-type:circle;
+	margin-left: 15px;	
 }
 
 #content ul ul li{
@@ -575,6 +577,7 @@ width: 97%;
 margin-bottom: 10px;
 margin-top: 10px;
 text-align: center;
+margin-left: 10px;
 }
 
 body .Bluebutton:hover{
@@ -593,7 +596,6 @@ body h2{
 }
 
 #content ul .membersLi{
-	background: none;
 	padding-bottom: 0px;
 }
 
@@ -642,7 +644,6 @@ body h2{
 }
 
 .objectDiv h4{
-	margin-left: 40px;
 	margin-top: 20px;	
 }
 .objectDiv #id_comment{
@@ -662,6 +663,7 @@ body h2{
 .objectDiv p, #voting-messages{
 	float:	none;
 	margin-left: 25px;
+	font-size: 15px;
 }
 
 .objectDiv form label{
@@ -675,12 +677,13 @@ body h2{
   direction: rtl;
 	margin-top: 20px;
 	margin-bottom: 20px;
-	margin-right: 520px;
+	margin-right: 450px;
 }
 .vote-choices > a {
   display: inline-block;
   position: relative;
   width: 1.1em;
+  font-size:30px;
 }
 .vote-choices > a:hover:before,
 .vote-choices > a:hover ~ a:before {
@@ -693,8 +696,7 @@ body h2{
 }
 
 #object-images li p{
-	margin-top: 20px;
-	margin-left: 0px;
+
 }
 
 #image-form {
@@ -722,7 +724,11 @@ body h2{
 
 li span, .ul-header{
 	font-weight:bold;
-	font-size: 15px;
+	font-size: 20px;
+}
+
+dt{
+	font-size:15px;
 }
 
 dl dt {
@@ -775,4 +781,32 @@ dd{
 	float:right;
 	padding-right:40px;
 }
+
+h3, .objectDiv .ul-header, h4, .membersLi{
+	font-size: 20px;
+	text-align:center;
+	background: url("../gfx/img04.gif") repeat-x scroll 0% 0% rgb(133, 195, 41);
+    background-color: rgb(133, 195, 41);
+    background-image: url("../gfx/img04.gif");
+    background-repeat: repeat-x;
+    background-attachment: scroll;
+    background-position: 0% 0%;
+    background-clip: border-box;
+    background-origin: padding-box;
+    background-size: auto auto;	
+    margin-right: 30px;
+    margin-top:10px;;
+}
+
+.objectDiv li{
+	font-size: 15px;	
+}
+
+li, p 
+{
+	font-size:16px;
+}
+
+
+
 
