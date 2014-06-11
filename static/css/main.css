@@ -136,7 +136,7 @@ a:hover {
 
 #menu {
 	padding: 20px;
-	background: #85C329 url('../gfx/img04.gif') repeat-x;
+	/*background: #85C329 url('../gfx/img04.gif') repeat-x;*/
 }
 
 #menu ul {
@@ -414,7 +414,7 @@ background-image: -webkit-gradient(linear, left top, left bottom, from(#49c0f0),
 }
 
 #content ul li{
-	padding-top: 10px;
+	padding-top: 20px;
 	/*background: url('../gfx/img11.gif') repeat-x left bottom;*/
 }
 
@@ -560,8 +560,9 @@ border:1px solid #15aeec; -webkit-border-radius: 3px; -moz-border-radius: 3px;bo
  background-image: -o-linear-gradient(top, #49c0f0, #2CAFE3);
  background-image: linear-gradient(to bottom, #49c0f0, #2CAFE3);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#49c0f0, endColorstr=#2CAFE3);
 text-align: center;
-margin: 0px 0px 0px;
-width: 20%;
+margin: 0px 0px 10px;
+width: 30%;
+margin-right: 400px;
 }
 
 body .Bluebutton2{
@@ -577,7 +578,8 @@ width: 97%;
 margin-bottom: 10px;
 margin-top: 10px;
 text-align: center;
-margin-left: 10px;
+width: 660px;
+margin-left: 30px;
 }
 
 body .Bluebutton:hover{
@@ -596,7 +598,6 @@ body h2{
 }
 
 #content ul .membersLi{
-	padding-bottom: 0px;
 }
 
 #content ul #object-participants li{
@@ -795,7 +796,10 @@ h3, .objectDiv .ul-header, h4, .membersLi{
     background-origin: padding-box;
     background-size: auto auto;	
     margin-right: 30px;
-    margin-top:10px;;
+    margin-top:10px;
+    margin-bottom:10px;
+    padding-top:10px;
+    padding-bottom: 10px;
 }
 
 .objectDiv li{
@@ -806,7 +810,6 @@ li, p
 {
 	font-size:16px;
 }
-
 
 
 

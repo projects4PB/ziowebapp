@@ -33,11 +33,11 @@
 	</ul>
 </ul>
 {% if user.get_profile and user.get_profile|is_participant:object %}
-	<a href="{% url 'create_note' object.pk %}" class="Bluebutton2">Dodaj notatkę do wydarzenia</a>
-	<a href="{% url 'leave_event' object.pk %}" class="Bluebutton2">Wypisz się z wydarzenia</a>
+	<a href="{% url 'create_note' object.pk %}" class="Bluebutton">Dodaj notatkę do wydarzenia</a>
+	<a href="{% url 'leave_event' object.pk %}" class="Bluebutton">Wypisz się z wydarzenia</a>
 {% else %}
 	{% if user.get_profile and not user.get_profile.is_owner and not user.get_profile|is_moderator:object %}
-		<a href="{% url 'join_event_offer' object.pk %}" class="Bluebutton2" id="joinLink">Dołącz do wydarzenia</a>
+		<a href="{% url 'join_event_offer' object.pk %}" class="Bluebutton" id="joinLink">Dołącz do wydarzenia</a>
 	{% endif %}
 {% endif %}
 </div>
