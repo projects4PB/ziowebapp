@@ -770,7 +770,7 @@ dd{
 .DescribeDiv img{
 	height: 150px;
 	float:left;
-	min-width: 200px;
+	max-width: 200px;
 }
 
 .obiekt{
